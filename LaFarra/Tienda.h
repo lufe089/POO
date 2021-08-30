@@ -19,8 +19,6 @@ using std::map;
 using std::string;
 using std::vector;
 
-const int CAP = 10;
-
 class Tienda
 {
 private: //Atributos
@@ -33,12 +31,12 @@ private: //Atributos
 public:		  //Metodos
 	Tienda(); //Constructor
 	Tienda(string nombre);
-	// Gets and sets
 	bool existeProductoPorCod(int cod);
 	void agregarProducto();
 	void mostrarProductos();
-	string getNombre();
-	void vender();
 	void mostrarFacturas();
+	void vender();
+	// Gets and sets
+	string getNombre();
 };
 #endif /* !TIENDA_H */

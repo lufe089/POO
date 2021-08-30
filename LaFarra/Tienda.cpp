@@ -85,7 +85,7 @@ void Tienda::agregarDetalle(float &totalIVA, float &totalSinIVA, float &totalGen
 	{
 		cout << "Ingrese el codigoProductoComprar \n";
 		cin >> codigo;
-	} while (!existeProductoPorCod(codigo));
+	} while (!existeProductoPorCod(codigo)); // while(existeProductoPorCod(codigo) == false);
 
 	// Se dispone de inventario para la venta
 	Producto productoTemp = this->inventario[codigo]; // Se obtiene del mapa. Existe pq ya se hizo esta validacion
@@ -93,11 +93,11 @@ void Tienda::agregarDetalle(float &totalIVA, float &totalSinIVA, float &totalGen
 	{
 		cout << "Cuantos productos quiere comprar \n";
 		cin >> cantidad;
-	} while (cantidad <= 0 && productoTemp.getCantUnidades() > cantidad);
+	} while (cantidad <= 0 || cantidad > productoTemp.getCantUnidades()); // Cuando falla
 
 	// Hago la venta
 	float valorPagarIvaProd = productoTemp.getCantUnidades() *
-							  productoTemp.getTipoProducto().getIva();
+							  productoTemp.getTipoProducto().getIva() * productoTemp.getPrecio();
 	float valorPagarSinIVAProd = productoTemp.getPrecio() * cantidad;
 	float valorTotalProd = valorPagarIvaProd + valorPagarSinIVAProd;
 
@@ -125,6 +125,13 @@ void Tienda::vender()
 	int opc = 0;
 	Factura factura;
 	string fecha;
+
+	cout << "Ingrese la fecha de venta \n";
+	cin >> fecha;
+	factura.setFecha(fecha);
+
+	// Asigno el codigo a la factura y luego actualizo el contador
+	factura.setCod(this->contCodFactura++);
 	do
 	{
 		cout << "Ingrese 1 para continuar la venta -1 para terminar \n";
@@ -132,13 +139,6 @@ void Tienda::vender()
 
 		if (opc != -1)
 		{
-			cout << "Ingrese la fecha de venta \n";
-			cin >> fecha;
-			factura.setFecha(fecha);
-
-			// Asigno el codigo a la factura y luego actualizo el contador
-			factura.setCod(this->contCodFactura++);
-
 			// Se llama  otra funcion que controla la adicion de productos
 			// paso de parametros por referencia
 			agregarDetalle(totalIVA, totalGeneral, totalSinIVA, factura);
@@ -169,8 +169,7 @@ void Tienda::mostrarProductos()
 	for (map<int, Producto>::iterator pProducto = inventario.begin();
 		 pProducto != inventario.end(); pProducto++)
 	{
-		int clave = pProducto->first;
-		Producto valor = pProducto->second;
+		Producto valor = pProducto->second; // Se obtiene el valor asociado al mapa
 		valor.mostrarProducto();
 	}
 }
