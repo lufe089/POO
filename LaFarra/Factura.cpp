@@ -14,7 +14,7 @@ void Factura::mostrarFactura()
     cout << "Factura numero: " << this->cod << "\n";
     cout << "Fecha: " << this->fecha << "\n";
 
-    cout << "Producto \t Valor unitario \t cantidad  \t total sin iva \t totalIva \t Total \n";
+    cout << "Producto \t cantidad  \t total sin iva \t totalIva \t Total \n";
     for (vector<DetalleFactura>::iterator pDetalle = detalles.begin();
          pDetalle != detalles.end(); pDetalle++)
     {
