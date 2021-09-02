@@ -101,9 +101,6 @@ void Tienda::agregarDetalle(float &totalIVA, float &totalSinIVA, float &totalGen
 	float valorPagarSinIVAProd = productoTemp.getPrecio() * cantidad;
 	float valorTotalProd = valorPagarIvaProd + valorPagarSinIVAProd;
 
-	cout << "lo que va";
-	cout << valorPagarIvaProd << valorPagarSinIVAProd << valorTotalProd;
-
 	// Agregan los datos al detalle de venta, aprovecho el constructor
 	DetalleFactura detalle(productoTemp, cantidad, valorPagarSinIVAProd,
 						   valorPagarIvaProd, valorTotalProd);
