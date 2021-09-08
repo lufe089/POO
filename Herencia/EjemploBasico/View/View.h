@@ -26,4 +26,5 @@ public:
 
     void combinarReferencias();
 };
-#define VIEW_H
+#endif
+//#define
