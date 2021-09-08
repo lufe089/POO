@@ -2,6 +2,7 @@
 #define ClassB_H
 
 #include <iostream>
+#include "ClassA.h"
 
 using std::cout;
 
