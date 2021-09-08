@@ -1,4 +1,5 @@
 #ifndef VIEW_H
+#define VIEW_H
 // Guardas
 
 /* Mostrar menua y validar datos de entrada */
