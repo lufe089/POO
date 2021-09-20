@@ -11,4 +11,8 @@ void ClassB::metodoB()
 {
     cout << "Yo como claseB defini " << atributo1b << "\n";
     cout << "Yo como claseB herede" << atributo2a << "\n";
+    int x;
+    ClassA *miObjA = new ClassA();
+    cout << x;
+    metodoA();
 }
