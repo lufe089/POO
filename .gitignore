@@ -25,8 +25,10 @@
 *.la
 *.a
 *.lib
+\cmake-build-debug-mingw
 
 # Executables
 *.exe
 *.out
 *.app
+*.idea
