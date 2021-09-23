@@ -26,7 +26,6 @@ float Mayor13::jugar(float gonzosApostar) {
     return gonzosResultado;
 }
 
-
 float Mayor13::calcularResultado(float gonzosApostar) {
     if(numeroJugador > numeroCasino)
     {
@@ -37,6 +36,8 @@ float Mayor13::calcularResultado(float gonzosApostar) {
         return 0;
     }
 }
+
+
 
 Mayor13::~Mayor13() {
 
