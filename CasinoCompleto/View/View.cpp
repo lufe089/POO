@@ -28,7 +28,7 @@ void View::agregarJugador()
     // Esta linea de codigo controla la excepcion que lanza el controller y lo muestra en pantalla
     try {
         casino.agregarJugador(idJugador, nombreJugador, dineroPesos);
-    } catch (std::domain_error ex) {
+    } catch (std::domain_error &ex) {
         // Controla la aparecion de errores.
         // what es el metodo que muestra el mensaje de error de las excepciones
         cout << "ERROR: " << ex.what();
@@ -66,7 +66,7 @@ void View::jugarView(){
             cout << "Haz perdido :C" << std::endl;
         }
 
-    }catch (std::domain_error ex){
+    }catch (std::domain_error &ex){
         // Se muestran los mensajes de excepcion obtenidos
         cout << ex.what();
     }
@@ -120,7 +120,7 @@ void View::mostrarJugador() {
         cout << "Ingrese el id del jugador: ";
         cin >> idJugador;
         casino.verInfoJugador(idJugador);
-    } catch (std::domain_error ex){
+    } catch (std::domain_error &ex){
         // Se muestra un error si el usuario no existe
         cout << ex.what();
     }
