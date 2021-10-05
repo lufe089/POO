@@ -14,6 +14,7 @@ private:
 public:
     ClassB();
     void metodoB();
+    void mostrar();
 };
 
 #endif // ClassB_H

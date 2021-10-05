@@ -16,3 +16,7 @@ void ClassB::metodoB()
     cout << x;
     metodoA();
 }
+
+void ClassB::mostrar() {
+    cout << "Soy B \n";
+}

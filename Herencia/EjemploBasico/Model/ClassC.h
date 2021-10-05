@@ -14,6 +14,7 @@ private:
 public:
     ClassC();
     void metodoC();
+    // void mostrar();
 };
 
 #endif // ClassC_H

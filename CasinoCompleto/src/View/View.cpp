@@ -25,14 +25,18 @@ void View::agregarJugador()
         cin >> dineroPesos;
     } while (dineroPesos <= 0);
 
-    // Esta linea de codigo controla la excepcion que lanza el controller y lo muestra en pantalla
-    try {
+    // Esta linea de codigo controla la excepcion que lanza el casino y lo muestra en pantalla
+   try {
         casino.agregarJugador(idJugador, nombreJugador, dineroPesos);
-    } catch (std::domain_error &ex) {
+        cout<< "sali \n";
+   } catch (std::invalid_argument &ex) {
         // Controla la aparecion de errores.
         // what es el metodo que muestra el mensaje de error de las excepciones
-        cout << "ERROR: " << ex.what();
-    }
+        cout << "ERROR con parámetros: " << ex.what();
+    } catch (std::exception &ex){
+       cout << "ERROR contactate al adminstrador " << ex.what();
+   }
+
 }
 
 void View::jugarView(){

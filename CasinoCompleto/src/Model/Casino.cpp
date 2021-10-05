@@ -28,7 +28,7 @@ void Casino::agregarJugador(long id, string nombreJugador, double dinero)
         jugadoresMap.insert({pJugador->getId(), pJugador});
 
     }else {
-        throw std::domain_error("El jugador con la identificacion recibida ya existe\n");
+        throw std::invalid_argument("El jugador con la identificacion recibida ya existe\n");
     }
 }
 

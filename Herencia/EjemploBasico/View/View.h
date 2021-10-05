@@ -7,10 +7,12 @@
 #include "../Model/ClassB.h"
 #include "../Model/ClassC.h"
 #include <iostream>
+#include <vector>
 
 using std::cin;
 using std::cout;
 using std::endl;
+using std::vector;
 
 class View
 {
@@ -18,6 +20,7 @@ private:
 public:
     int mostrarMenu();
     void verPrincipal();
+    void probarPolimorfimo();
 
     void probarClassB();
 

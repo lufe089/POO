@@ -16,5 +16,6 @@ protected:
 public:
     ClassA();
     void metodoA();
+    virtual void mostrar();
 };
 #endif // ClassA_H

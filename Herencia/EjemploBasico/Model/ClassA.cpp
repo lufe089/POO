@@ -12,3 +12,7 @@ void ClassA::metodoA()
     cout << "Solo clase A: Yo como clase A defini " << atributo1a << "--"
          << atributo2a << "\n";
 }
+
+void ClassA::mostrar() {
+    cout << "Soy A \n";
+}
