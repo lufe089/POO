@@ -1,0 +1,1 @@
+-IL:/GIT/POO/UnitTesting-1/lib -IL:/GIT/POO/UnitTesting-1/src -IL:/GIT/POO/UnitTesting-1/test -isystem L:/GIT/POO/UnitTesting-1/lib/googleTest/googlemock/include -isystem L:/GIT/POO/UnitTesting-1/lib/googleTest/googlemock -isystem L:/GIT/POO/UnitTesting-1/lib/googleTest/googletest/include -isystem L:/GIT/POO/UnitTesting-1/lib/googleTest/googletest

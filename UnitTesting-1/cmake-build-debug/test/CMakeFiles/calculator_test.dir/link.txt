@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\calculator_test.dir/objects.a
+C:\MinGW\bin\ar.exe qc CMakeFiles\calculator_test.dir/objects.a @CMakeFiles\calculator_test.dir\objects1.rsp
+C:\MinGW\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\calculator_test.dir/objects.a -Wl,--no-whole-archive -o calculator_test.exe -Wl,--out-implib,libcalculator_test.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\calculator_test.dir\linklibs.rsp
