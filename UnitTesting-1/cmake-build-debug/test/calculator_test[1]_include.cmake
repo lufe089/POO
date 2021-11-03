@@ -1,5 +1,0 @@
-if(EXISTS "L:/GIT/POO/UnitTesting-1/cmake-build-debug/test/calculator_test[1]_tests.cmake")
-  include("L:/GIT/POO/UnitTesting-1/cmake-build-debug/test/calculator_test[1]_tests.cmake")
-else()
-  add_test(calculator_test_NOT_BUILT calculator_test_NOT_BUILT)
-endif()
