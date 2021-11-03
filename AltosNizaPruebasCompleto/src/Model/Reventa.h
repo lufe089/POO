@@ -9,8 +9,9 @@ using namespace std;
 class Reventa : public Propietario{
     public:
         Reventa();
-        Reventa(string nombre, int id, Propiedad propiedad);
-        void mostrarBeneficios();
+        Reventa(string nombre, int id, Propiedad &propiedad);
+
+    void mostrarBeneficios();
 };
 
 #endif

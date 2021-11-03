@@ -13,7 +13,9 @@ class Propietario{
         Propiedad propiedad;
     public:
         Propietario();
-        float calcularPagoAdmin(int valor);
+        Propietario(string nombre, int id, Propiedad& propiedad);
+
+    float calcularPagoAdmin(int valor);
         virtual void mostrarBeneficios() = 0;
         string getNombre();
         Propiedad getPropiedad();

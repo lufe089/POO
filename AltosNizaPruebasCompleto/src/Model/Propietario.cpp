@@ -4,6 +4,9 @@ Propietario::Propietario(){
 
 }
 
+Propietario::Propietario(string nombre, int id, Propiedad &propiedad) : nombre(nombre), id(id),
+                                                                                     propiedad(propiedad) {}
+
 float Propietario::calcularPagoAdmin(int valor){
     return this->propiedad.calcPagoAdmin(valor);
 }

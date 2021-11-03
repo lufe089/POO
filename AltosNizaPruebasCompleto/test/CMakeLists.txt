@@ -12,15 +12,14 @@ set(SOURCES ${TEST_SOURCES})
 ## Working simple cmake
 enable_testing()
 
-#add_executable(${BINARY} ${TEST_SOURCES})
+add_executable(${BINARY} ${TEST_SOURCES} PropietarioTest.cpp)
 #add_executable(casino_full_test hello_test.cpp CasinoTest.cpp DosColoresTest.cpp)
 
 # First target --> test executable second target src executable , third target google test files
 #target_link_libraries(test_calculator casino_full_lib gtest_main )
 # VInculo con las fuentes del proyecto. Ojo google test requiere C++11 Que punto del codigo es el que vamos a probar
-#target_link_libraries(${BINARY} ${CMAKE_PROJECT_NAME}_lib gtest_main)
+target_link_libraries(${BINARY} ${CMAKE_PROJECT_NAME}_lib gtest_main)
 
 
 include(GoogleTest)
-#gtest_discover_tests(test_calculator)
-#gtest_discover_tests(${BINARY})
+gtest_discover_tests(${BINARY})

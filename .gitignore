@@ -26,6 +26,7 @@
 *.a
 *.lib
 \cmake-build-debug-mingw
+/cmake-build-debug
 
 # Executables
 *.exe

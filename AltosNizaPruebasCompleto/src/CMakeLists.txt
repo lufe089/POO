@@ -1,7 +1,7 @@
 file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.h *.cpp *.cc)
 
 # Definicion variable sources
-set(SOURCES ${SOURCES})
+set(SOURCES ${SOURCES} ../test/AdminTest.cpp)
 
 # Instrucción que define el ejecutable a partir de las fuentes definidas
 add_executable(${BINARY}_run ${SOURCES})  # Primer parametro nombre del ejecutable segundo parametro lista de todos los archivos a compilar

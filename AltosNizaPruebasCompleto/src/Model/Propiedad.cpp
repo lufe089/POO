@@ -4,12 +4,8 @@ Propiedad::Propiedad(){
 
 }
 
-Propiedad::Propiedad(int id, int piso, float area, bool parqueadero){
-    this->id = id;
-    this->piso = piso;
-    this->area = area;
-    this->parqueadero = parqueadero;
-}
+Propiedad::Propiedad(int id, int piso, float area, bool parqueadero) : id(id), piso(piso), area(area),
+                                                                       parqueadero(parqueadero) {}
 
 float Propiedad::calcPagoAdmin(int valorAdministracion){
     return (2000 * this->piso) + (valorAdministracion * 0,05 * (this->area > 150 ? 1 : 0)) + valorAdministracion;

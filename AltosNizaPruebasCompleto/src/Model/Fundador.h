@@ -9,8 +9,9 @@ using namespace std;
 class Fundador : public Propietario{
     public:
         Fundador();
-        Fundador(string nombre, int id, Propiedad propiedad);
-        void mostrarBeneficios();
+        Fundador(string nombre, int id, Propiedad &propiedad);
+
+    void mostrarBeneficios();
 };
 
 #endif

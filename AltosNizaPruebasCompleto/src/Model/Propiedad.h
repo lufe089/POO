@@ -13,7 +13,8 @@ class Propiedad{
     public:
         Propiedad();
         Propiedad(int id, int piso, float area, bool parqueadero);
-        float calcPagoAdmin(int valor);
+
+    float calcPagoAdmin(int valor);
         int getId();
         void setId(int id);
         int getPiso();
