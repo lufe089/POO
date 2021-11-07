@@ -9,10 +9,7 @@ file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false *.h *.cpp *.cc)
 # Definicion variable sources para las pruebas
 set(SOURCES ${TEST_SOURCES})
 
-## Working simple cmake
-enable_testing()
-
-add_executable(${BINARY} ${TEST_SOURCES} PropietarioTest.cpp)
+add_executable(${BINARY} ${SOURCES})
 #add_executable(casino_full_test hello_test.cpp CasinoTest.cpp DosColoresTest.cpp)
 
 # First target --> test executable second target src executable , third target google test files
@@ -20,6 +17,8 @@ add_executable(${BINARY} ${TEST_SOURCES} PropietarioTest.cpp)
 # VInculo con las fuentes del proyecto. Ojo google test requiere C++11 Que punto del codigo es el que vamos a probar
 target_link_libraries(${BINARY} ${CMAKE_PROJECT_NAME}_lib gtest_main)
 
+## Working simple cmake
+enable_testing()
 
 include(GoogleTest)
 gtest_discover_tests(${BINARY})
