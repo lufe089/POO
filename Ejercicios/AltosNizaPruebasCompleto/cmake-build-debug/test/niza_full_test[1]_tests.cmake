@@ -1,0 +1,5 @@
+add_test( PropietarioTest.calcularAdministracion L:/GIT/POO/AltosNizaPruebasCompleto/cmake-build-debug/test/niza_full_test.exe [==[--gtest_filter=PropietarioTest.calcularAdministracion]==] --gtest_also_run_disabled_tests)
+set_tests_properties( PropietarioTest.calcularAdministracion PROPERTIES WORKING_DIRECTORY L:/GIT/POO/AltosNizaPruebasCompleto/cmake-build-debug/test SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test( OtroTest.otro L:/GIT/POO/AltosNizaPruebasCompleto/cmake-build-debug/test/niza_full_test.exe [==[--gtest_filter=OtroTest.otro]==] --gtest_also_run_disabled_tests)
+set_tests_properties( OtroTest.otro PROPERTIES WORKING_DIRECTORY L:/GIT/POO/AltosNizaPruebasCompleto/cmake-build-debug/test SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set( niza_full_test_TESTS PropietarioTest.calcularAdministracion OtroTest.otro)

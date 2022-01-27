@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libniza_full_lib.a CMakeFiles/niza_full_lib.dir/Model/Admin.cpp.obj CMakeFiles/niza_full_lib.dir/Model/Fundador.cpp.obj CMakeFiles/niza_full_lib.dir/Model/Propiedad.cpp.obj CMakeFiles/niza_full_lib.dir/Model/Propietario.cpp.obj CMakeFiles/niza_full_lib.dir/Model/Reventa.cpp.obj CMakeFiles/niza_full_lib.dir/View/View.cpp.obj CMakeFiles/niza_full_lib.dir/main.cpp.obj
+C:\MinGW\bin\ranlib.exe libniza_full_lib.a

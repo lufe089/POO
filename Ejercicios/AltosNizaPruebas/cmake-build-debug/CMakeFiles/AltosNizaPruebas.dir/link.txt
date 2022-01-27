@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2021.1.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\AltosNizaPruebas.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\AltosNizaPruebas.dir/objects.a @CMakeFiles\AltosNizaPruebas.dir\objects1.rsp
+C:\MinGW\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\AltosNizaPruebas.dir/objects.a -Wl,--no-whole-archive -o AltosNizaPruebas.exe -Wl,--out-implib,libAltosNizaPruebas.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\AltosNizaPruebas.dir\linklibs.rsp
