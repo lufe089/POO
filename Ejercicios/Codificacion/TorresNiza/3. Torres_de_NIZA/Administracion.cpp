@@ -91,8 +91,18 @@ void Administracion::llenarPropiedades()
     return propTemp;*/
 }
 
-void Administracion::imprimirUnPropietario()
+/* Cambia pq necesita el id del propietario a consultar */
+/* Se debe ajustar el .h y el diagrama de clase */
+void Administracion::imprimirUnPropietario(double id)
 {
+    // Vamos a buscar si un propietario dado esta o no esta en el vector primero
+    for (int i = 0; i < propietarios.size(); i++)
+    {
+        if (propietarios[i].getIdentificacion() == id)
+        {
+            propietarios[i].mostrarDatosPropietario();
+        }
+    }
 }
 
 void Administracion::imprimirPropietarios()
@@ -109,6 +119,8 @@ void Administracion::imprimirPropietariosConParqueadero()
     // Recorrer el arreglo e imprimir todos los propietarios que tienen parqueadero.
     for (int i = 0; i < propiedadesxPropietarios.size(); i++)
     {
+        // Se puede escribir también así:
+        // propiedadesxPropietarios[i].getPropiedad().getParqueadero()
         if (propiedadesxPropietarios[i].getPropiedad().getParqueadero() == true)
         {
             propiedadesxPropietarios[i].getPropietario().mostrarDatosPropietario();
@@ -119,4 +131,13 @@ void Administracion::imprimirPropietariosConParqueadero()
 
 void Administracion::recaudarAdministracion()
 {
+    for (int i = 0; i < propiedadesxPropietarios.size(); i++)
+    {
+        // Recorre la union de las propieades x propietarios y
+        if (propiedadesxPropietarios[i].getPropiedad().getParqueadero() == true)
+        {
+            propiedadesxPropietarios[i].getPropietario().mostrarDatosPropietario();
+            propiedadesxPropietarios[i].getPropiedad().mostrarDatosPropiedad();
+        }
+    }
 }

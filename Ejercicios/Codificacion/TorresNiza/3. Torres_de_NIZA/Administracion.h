@@ -24,8 +24,8 @@ private:
 public:
     Administracion();
     void inicializarDatos();
-    void imprimirPropietariosConParqueadero(); // TO-DO
-    void imprimirUnPropietario();
+    void imprimirPropietariosConParqueadero(); 
+    void imprimirUnPropietario(double id);
     void imprimirPropietarios();
     void recaudarAdministracion();
     void llenarPropiedades();
