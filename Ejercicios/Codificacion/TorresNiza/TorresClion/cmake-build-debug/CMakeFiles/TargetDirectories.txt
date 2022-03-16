@@ -1,0 +1,3 @@
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/cmake-build-debug/CMakeFiles/TorresClion.dir
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/cmake-build-debug/CMakeFiles/edit_cache.dir
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/cmake-build-debug/CMakeFiles/rebuild_cache.dir

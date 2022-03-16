@@ -1,0 +1,3 @@
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/cmake-build-debug/CMakeFiles/4__Torres_de_NIZA.dir
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/cmake-build-debug/CMakeFiles/edit_cache.dir
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2021.1.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\VeterinariaVersionA.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\VeterinariaVersionA.dir/objects.a @CMakeFiles\VeterinariaVersionA.dir\objects1.rsp
+C:\MinGW\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\VeterinariaVersionA.dir/objects.a -Wl,--no-whole-archive -o VeterinariaVersionA.exe -Wl,--out-implib,libVeterinariaVersionA.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\VeterinariaVersionA.dir\linklibs.rsp

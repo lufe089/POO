@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/Administracion.h
+iostream
+-
+Propietario.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/Propietario.h
+Propiedad.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/Propiedad.h
+PropiedadxPropietario.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/PropiedadxPropietario.h
+vector
+-
+
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/Propiedad.h
+iostream
+-
+
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/PropiedadxPropietario.h
+Propiedad.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/Propiedad.h
+Propietario.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/Propietario.h
+
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/Propietario.h
+iostream
+-
+Propiedad.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/Propiedad.h
+
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/main.cpp
+iostream
+-
+Administracion.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/TorresClion/Administracion.h
+

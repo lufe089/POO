@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/Administracion.h
+iostream
+-
+Propietario.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/Propietario.h
+Propiedad.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/Propiedad.h
+PropiedadxPropietario.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/PropiedadxPropietario.h
+vector
+-
+
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/Main.cpp
+iostream
+-
+Administracion.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/Administracion.h
+
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/Propiedad.h
+iostream
+-
+
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/PropiedadxPropietario.h
+Propiedad.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/Propiedad.h
+Propietario.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/Propietario.h
+
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/Propietario.h
+iostream
+-
+Propiedad.h
+L:/GIT/POO/Ejercicios/Codificacion/TorresNiza/4. Torres_de_NIZA/Propiedad.h
+

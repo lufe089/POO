@@ -1,0 +1,1 @@
+CMakeLists.txt not found in L:\GIT\POO\Ejercicios\Codificacion\Proyectos\Proyecto1\VeterinariaVersionA Select CMakeLists.txt
