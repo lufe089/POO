@@ -20,7 +20,7 @@ Casino::Casino() {
 void Casino::agregarJugador(long id, string nombreJugador, double dinero)
 {
     // Se agrega jugador solo si no existe con anticipacion
-    if (verExisteJugador(id) == false){
+    if (!verExisteJugador(id)){
         // Se convierte el dinero a Gonzos
         float cantGonzos = convertirPesosAGonzos(dinero);
         Jugador * pJugador = new Jugador (id, nombreJugador, cantGonzos);
@@ -37,7 +37,7 @@ bool Casino::jugar(int idJuego, long idJugador, float gonzosApostar) {
         throw std::domain_error("Debe apostar al menos 1 gonzo\n");
     }
 
-    if (verExisteJugador(idJugador) == false){
+    if (!verExisteJugador(idJugador)){
         throw std::domain_error("El jugador con la identificacion recibida NO existe, no es posible jugar\n");
     }
     if (idJuego > juegosDisponibles.size()){

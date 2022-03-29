@@ -38,7 +38,7 @@ void View::probarPolimorfimo(){
         miVector[i]->mostrar();
     }
 
-};
+}
 
 void View::probarClassC()
 {

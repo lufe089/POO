@@ -23,8 +23,8 @@ public:
     void probarPolimorfimo();
 
     void probarClassB();
-
     void probarClassA();
+
 
     void probarClassC();
 

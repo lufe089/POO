@@ -8,7 +8,7 @@ using std::cout;
 class ClassA
 {
 private:
-    int atributo1a;
+    int atributoPepito;
 
 protected:
     int atributo2a;
