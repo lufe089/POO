@@ -155,7 +155,7 @@ void Administracion::agregarPropiedad() {
 
     } else {
         // Se envía NULL en el cuarto útil
-        propTemp = new Propiedad(id, piso, area, parqueadero, NULL);
+        propTemp = new Propiedad(id, piso, area, parqueadero, nullptr);
     }
     propiedades.push_back(propTemp);
     cout << "\nPropiedad agregada" << endl;
@@ -165,7 +165,7 @@ void Administracion::agregarPropiedad() {
 
 void Administracion::agregarPropietario() {
     string nombre;
-    double id;
+    long id;
     cout << "Ingrese el nombre:" << endl;
     cin.ignore(); // Importante para quitar el salto de línea en caso de que exista
     getline(cin, nombre); // Sirve para leer cadenas
@@ -191,7 +191,6 @@ void Administracion::relacionarPropietarioPropiedad() {
 
     cout << "Ingrese el id de la propiedad, -1 para cancelar" << endl;
     cin >> idPropiedad;
-
 
     cout << "Ingrese id del propietario, - 1 para cancelar" << endl;
     cin >> id;
@@ -307,9 +306,9 @@ Administracion::~Administracion() {
 void Administracion::imprimirPropietariosSinCuarto() {
 
     for (int i = 0; i < propietarios.size(); ++i) {
-        if (propietarios[i]->getPropiedad() != NULL) {
+        if (propietarios[i]->getPropiedad() != nullptr) {
 
-            if (propietarios[i]->getPropiedad()->getCuartoUtil() == NULL) {
+            if (propietarios[i]->getPropiedad()->getCuartoUtil() == nullptr) {
 
                 propietarios[i]->mostrarDatos();
             }
@@ -320,13 +319,13 @@ void Administracion::imprimirPropietariosSinCuarto() {
 
 void Administracion::imprimirPropietariosCuartoUtil(bool isTerminado) {
 
-    for (int i = 0; i < propietarios.size(); ++i) {
-        if (propietarios[i]->getPropiedad() != NULL) {
+    for (auto & propietario : propietarios) {
+        if (propietario->getPropiedad() != nullptr) {
 
-            if (propietarios[i]->getPropiedad()->getCuartoUtil() != NULL &&
-                propietarios[i]->getPropiedad()->getCuartoUtil()->getEstaTerminado() == isTerminado) {
+            if (propietario->getPropiedad()->getCuartoUtil() != nullptr &&
+                propietario->getPropiedad()->getCuartoUtil()->isEstaTerminado() == isTerminado) {
 
-                propietarios[i]->mostrarDatos();
+                propietario->mostrarDatos();
             }
         }
     }

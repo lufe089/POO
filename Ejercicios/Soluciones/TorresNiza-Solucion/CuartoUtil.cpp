@@ -3,14 +3,13 @@
 
 
 CuartoUtil::CuartoUtil() {
-
     numeracion = "";
     piso = 0;
     estaTerminado = false;
 }
 
 
-CuartoUtil::CuartoUtil(string numeracion, int piso, bool estaTerminado) : numeracion(numeracion), piso(piso),
+CuartoUtil::CuartoUtil(string & numeracion, int piso, bool estaTerminado) : numeracion(numeracion), piso(piso),
                                                                           estaTerminado(estaTerminado) {}
 
 void CuartoUtil::mostrarDatos() {
@@ -24,13 +23,12 @@ string CuartoUtil::imprimirInfoEstadoCuarto() {
     return estaTerminado ? "terminado" : "No terminado";
 }
 
-string CuartoUtil::getNumeracion() const {
+const string &CuartoUtil::getNumeracion() const {
     return numeracion;
 }
 
-void CuartoUtil::setNumeracion(string numeracion) {
-
-    CuartoUtil::numeracion.assign(numeracion);
+void CuartoUtil::setNumeracion(const string &numeracion) {
+    CuartoUtil::numeracion = numeracion;
 }
 
 int CuartoUtil::getPiso() const {
@@ -41,10 +39,11 @@ void CuartoUtil::setPiso(int piso) {
     CuartoUtil::piso = piso;
 }
 
-bool CuartoUtil::getEstaTerminado() const {
+bool CuartoUtil::isEstaTerminado() const {
     return estaTerminado;
 }
 
 void CuartoUtil::setEstaTerminado(bool estaTerminado) {
     CuartoUtil::estaTerminado = estaTerminado;
 }
+

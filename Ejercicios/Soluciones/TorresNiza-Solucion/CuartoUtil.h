@@ -22,21 +22,22 @@ private:
 
 public:
     CuartoUtil();                                // El contructor x defecto
-    CuartoUtil(string numeracion, int piso, bool estaTerminado);
+    CuartoUtil(string & numeracion, int piso, bool estaTerminado);
 
     void mostrarDatos();
 
-    string getNumeracion() const;
+    const string &getNumeracion() const;
 
-    void setNumeracion(string numeracion);
+    void setNumeracion(const string &numeracion);
 
     int getPiso() const;
 
     void setPiso(int piso);
 
-    bool getEstaTerminado() const;
+    bool isEstaTerminado() const;
 
     void setEstaTerminado(bool estaTerminado);
+
 };
 
 
