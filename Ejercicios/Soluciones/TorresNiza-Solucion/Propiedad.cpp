@@ -43,7 +43,7 @@ float Propiedad::calcularRecargo(float cobroAscensor, float costoBase, float rec
     //Descuento por cuarto util
     if (cuartoUtil != NULL) {
 
-        if (!cuartoUtil->getEstaTerminado()) {
+        if (!cuartoUtil->isEstaTerminado()) {
             total = total - (total * 0.01);
         }
     }

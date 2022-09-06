@@ -61,7 +61,7 @@ void mostrarMenuPropietarios(Administracion &administracion) {
 
 }
 
-void mostrarMenuAdministracion(Administracion &administracion) {
+void mostrarMenuAdministracion(Administracion& administracioncita) {
     int opc = 0;
     cout << "1. Recaudar administracion \n";
     cout << "2. Asociar propietario-propiedad \n";
@@ -71,15 +71,15 @@ void mostrarMenuAdministracion(Administracion &administracion) {
 
     switch (opc) {
         case 1:
-            administracion.recaudarAdministracion();
+            administracioncita.recaudarAdministracion();
             break;
 
         case 2:
-            administracion.relacionarPropietarioPropiedad();
+            administracioncita.relacionarPropietarioPropiedad();
             break;
 
         case 3:
-            administracion.agregarPropiedad();
+            administracioncita.agregarPropiedad();
             break;
 
         default:
@@ -87,7 +87,7 @@ void mostrarMenuAdministracion(Administracion &administracion) {
     }
 }
 
-void menu(Administracion &administracion) {
+void menu(Administracion& administracioncitaDos) {
     int opc = 0;
     do {
         cout << "\n ****Bienvenidos ****\n";
@@ -99,10 +99,10 @@ void menu(Administracion &administracion) {
 
         switch (opc) {
             case 1:
-                mostrarMenuPropietarios(administracion);
+                mostrarMenuPropietarios(administracioncitaDos);
                 break;
             case 2:
-                mostrarMenuAdministracion(administracion);
+                mostrarMenuAdministracion(administracioncitaDos);
                 break;
             default:
                 break;
