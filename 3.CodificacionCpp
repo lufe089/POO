@@ -1,0 +1,137 @@
+# Introducción a C++ y Configuración del Entorno
+
+## ¿Qué es C++?
+C++ es un lenguaje de programación de alto rendimiento y orientado a objetos, utilizado en el desarrollo de software de sistemas, juegos, aplicaciones de escritorio y más. Es una evolución de C, con la adición de características orientadas a objetos. Empresas como Microsoft, Google y Adobe utilizan C++ para desarrollar productos como Windows, Chrome y Photoshop. También es ampliamente utilizado en el desarrollo de motores de videojuegos como Unreal Engine y en sistemas de alto rendimiento como los utilizados en la industria financiera. C++ fue creado por Bjarne Stroustrup en 1983 en los laboratorios Bell con el objetivo de extender el lenguaje C con características de programación orientada a objetos. Aprender C++ es una excelente forma de entender la programación orientada a objetos debido a su flexibilidad y control sobre los recursos del sistema. Entre sus ventajas, C++ permite un alto rendimiento, es ampliamente utilizado en la industria del software y proporciona un conocimiento sólido sobre cómo funcionan los lenguajes de programación a nivel bajo y alto.
+
+## Configuraciones previas para trabajar con C++
+Antes de empezar a programar en C++, es necesario configurar el entorno de desarrollo en tu sistema operativo.
+
+### Instalación de un compilador
+Un compilador es necesario para traducir el código fuente de C++ a un programa ejecutable. Utilizaremos MinGW en Windows y `g++` en Linux/macOS.
+
+#### Windows (MinGW)
+1. Descarga MinGW desde [https://www.mingw-w64.org/](https://www.mingw-w64.org/).
+2. Instala MinGW y agrega `C:\mingw-w64\bin` al `PATH` del sistema.
+3. Verifica la instalación ejecutando:
+   ```sh
+   g++ --version
+   ```
+
+#### Linux
+1. Abre la terminal e instala `g++` ejecutando:
+   ```sh
+   sudo apt update && sudo apt install g++
+   ```
+2. Verifica la instalación:
+   ```sh
+   g++ --version
+   ```
+
+#### macOS
+1. Instala Xcode Command Line Tools con:
+   ```sh
+   xcode-select --install
+   ```
+2. Verifica la instalación:
+   ```sh
+   g++ --version
+   ```
+
+## ¿Qué es un entorno de desarrollo integrado (IDE)?
+Un IDE es una aplicación que facilita la programación al incluir un editor de código, herramientas de depuración y otras funcionalidades.
+
+### CLion: IDE recomendado para C++
+CLion es un IDE desarrollado por JetBrains, una empresa reconocida por crear herramientas avanzadas para desarrolladores, incluyendo IntelliJ IDEA y PyCharm. CLion ofrece características avanzadas para programar en C++, como autocompletado, depuración integrada y soporte para CMake, facilitando el desarrollo y la gestión eficiente de proyectos en este lenguaje.
+
+### Instalación de CLion
+1. Descarga CLion desde [https://www.jetbrains.com/clion/](https://www.jetbrains.com/clion/).
+2. Instálalo siguiendo las instrucciones para tu sistema operativo.
+3. Para obtener una licencia de estudiante gratuita, regístrate en [https://www.jetbrains.com/community/education/](https://www.jetbrains.com/community/education/).
+
+## ¿Qué es CMake y por qué es importante?
+### ¿Qué es la compilación y por qué es necesaria en C++?
+La compilación es el proceso mediante el cual el código fuente escrito en un lenguaje de alto nivel como C++ se traduce a un código ejecutable por la computadora. En C++, el código debe compilarse antes de poder ejecutarse, ya que el lenguaje no es interpretado como Python. Este proceso permite optimizar el rendimiento y asegurar la eficiencia del programa.
+
+CMake es una herramienta de configuración y construcción de proyectos en C++. Permite compilar proyectos con múltiples archivos fuente y bibliotecas.
+
+### Instalación de CMake
+#### Windows
+Descarga el instalador desde [https://cmake.org/download/](https://cmake.org/download/) y agrégalo al `PATH`.
+
+#### Linux/macOS
+Instala CMake con:
+```sh
+sudo apt install cmake  # Linux
+brew install cmake      # macOS
+```
+
+## Organización del código en C++: Múltiples archivos
+En C++, se recomienda separar la declaración y la implementación de las clases en archivos distintos:
+
+- **Archivo de encabezado (.h)**: Contiene la definición de la clase.
+- **Archivo de implementación (.cpp)**: Contiene la implementación de los métodos.
+- **Archivo principal (main.cpp)**: Contiene la función `main()` donde inicia la ejecución del programa.
+
+Ejemplo:
+
+**Archivo Persona.h**
+```cpp
+#ifndef PERSONA_H
+#define PERSONA_H
+
+#include <string>
+
+class Persona {
+private:
+    std::string nombre;
+    int edad;
+public:
+    Persona(std::string nombre, int edad);
+    void mostrarInformacion();
+};
+
+#endif
+```
+
+**Archivo Persona.cpp**
+```cpp
+#include "Persona.h"
+#include <iostream>
+
+Persona::Persona(std::string nombre, int edad) : nombre(nombre), edad(edad) {}
+
+void Persona::mostrarInformacion() {
+    std::cout << "Nombre: " << nombre << ", Edad: " << edad << std::endl;
+}
+```
+
+**Archivo main.cpp**
+```cpp
+#include "Persona.h"
+
+int main() {
+    Persona p1("Juan", 20);
+    Persona p2("Maria", 25);
+    Persona p3("Carlos", 30);
+    
+    p1.mostrarInformacion();
+    p2.mostrarInformacion();
+    p3.mostrarInformacion();
+    
+    return 0;
+}
+```
+
+## Compilación y ejecución de un programa en C++
+Para compilar un programa con múltiples archivos, usa el siguiente comando:
+```sh
+g++ main.cpp Persona.cpp -o programa
+```
+Ejecuta el programa con:
+```sh
+./programa  # Linux/macOS
+programa.exe  # Windows
+```
+
+Con esta configuración, estarás listo para empezar a programar en C++ de manera eficiente. ¡Manos a la obra!
+
