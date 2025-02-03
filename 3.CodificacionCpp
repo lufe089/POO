@@ -1,15 +1,19 @@
 # Introducción a C++ y Configuración del Entorno
 
 ## ¿Qué es C++?
+
 C++ es un lenguaje de programación de alto rendimiento y orientado a objetos, utilizado en el desarrollo de software de sistemas, juegos, aplicaciones de escritorio y más. Es una evolución de C, con la adición de características orientadas a objetos. Empresas como Microsoft, Google y Adobe utilizan C++ para desarrollar productos como Windows, Chrome y Photoshop. También es ampliamente utilizado en el desarrollo de motores de videojuegos como Unreal Engine y en sistemas de alto rendimiento como los utilizados en la industria financiera. C++ fue creado por Bjarne Stroustrup en 1983 en los laboratorios Bell con el objetivo de extender el lenguaje C con características de programación orientada a objetos. Aprender C++ es una excelente forma de entender la programación orientada a objetos debido a su flexibilidad y control sobre los recursos del sistema. Entre sus ventajas, C++ permite un alto rendimiento, es ampliamente utilizado en la industria del software y proporciona un conocimiento sólido sobre cómo funcionan los lenguajes de programación a nivel bajo y alto.
 
 ## Configuraciones previas para trabajar con C++
+
 Antes de empezar a programar en C++, es necesario configurar el entorno de desarrollo en tu sistema operativo.
 
 ### Instalación de un compilador
+
 Un compilador es necesario para traducir el código fuente de C++ a un programa ejecutable. Utilizaremos MinGW en Windows y `g++` en Linux/macOS.
 
 #### Windows (MinGW)
+
 1. Descarga MinGW desde [https://www.mingw-w64.org/](https://www.mingw-w64.org/).
 2. Instala MinGW y agrega `C:\mingw-w64\bin` al `PATH` del sistema.
 3. Verifica la instalación ejecutando:
@@ -18,6 +22,7 @@ Un compilador es necesario para traducir el código fuente de C++ a un programa 
    ```
 
 #### Linux
+
 1. Abre la terminal e instala `g++` ejecutando:
    ```sh
    sudo apt update && sudo apt install g++
@@ -28,6 +33,7 @@ Un compilador es necesario para traducir el código fuente de C++ a un programa 
    ```
 
 #### macOS
+
 1. Instala Xcode Command Line Tools con:
    ```sh
    xcode-select --install
@@ -38,34 +44,46 @@ Un compilador es necesario para traducir el código fuente de C++ a un programa 
    ```
 
 ## ¿Qué es un entorno de desarrollo integrado (IDE)?
+
 Un IDE es una aplicación que facilita la programación al incluir un editor de código, herramientas de depuración y otras funcionalidades.
 
 ### CLion: IDE recomendado para C++
+
 CLion es un IDE desarrollado por JetBrains, una empresa reconocida por crear herramientas avanzadas para desarrolladores, incluyendo IntelliJ IDEA y PyCharm. CLion ofrece características avanzadas para programar en C++, como autocompletado, depuración integrada y soporte para CMake, facilitando el desarrollo y la gestión eficiente de proyectos en este lenguaje.
 
 ### Instalación de CLion
+
+Para aprender más sobre cómo utilizar CLion, puedes consultar la documentación oficial en [https://www.jetbrains.com/help/clion/](https://www.jetbrains.com/help/clion/).
+
 1. Descarga CLion desde [https://www.jetbrains.com/clion/](https://www.jetbrains.com/clion/).
 2. Instálalo siguiendo las instrucciones para tu sistema operativo.
 3. Para obtener una licencia de estudiante gratuita, regístrate en [https://www.jetbrains.com/community/education/](https://www.jetbrains.com/community/education/).
 
 ## ¿Qué es CMake y por qué es importante?
+
 ### ¿Qué es la compilación y por qué es necesaria en C++?
+
 La compilación es el proceso mediante el cual el código fuente escrito en un lenguaje de alto nivel como C++ se traduce a un código ejecutable por la computadora. En C++, el código debe compilarse antes de poder ejecutarse, ya que el lenguaje no es interpretado como Python. Este proceso permite optimizar el rendimiento y asegurar la eficiencia del programa.
 
 CMake es una herramienta de configuración y construcción de proyectos en C++. Permite compilar proyectos con múltiples archivos fuente y bibliotecas.
 
 ### Instalación de CMake
+
 #### Windows
+
 Descarga el instalador desde [https://cmake.org/download/](https://cmake.org/download/) y agrégalo al `PATH`.
 
 #### Linux/macOS
+
 Instala CMake con:
+
 ```sh
 sudo apt install cmake  # Linux
 brew install cmake      # macOS
 ```
 
 ## Organización del código en C++: Múltiples archivos
+
 En C++, se recomienda separar la declaración y la implementación de las clases en archivos distintos:
 
 - **Archivo de encabezado (.h)**: Contiene la definición de la clase.
@@ -75,6 +93,10 @@ En C++, se recomienda separar la declaración y la implementación de las clases
 Ejemplo:
 
 **Archivo Persona.h**
+
+// Definición de la clase Persona.
+// Este archivo solo contiene la declaración de la clase y sus métodos.
+
 ```cpp
 #ifndef PERSONA_H
 #define PERSONA_H
@@ -82,18 +104,23 @@ Ejemplo:
 #include <string>
 
 class Persona {
+// La clase Persona tiene dos atributos privados: nombre y edad.
+// También tiene un constructor y un método público para mostrar la información.
 private:
+    // Atributos privados de la clase Persona.
     std::string nombre;
     int edad;
 public:
+    // Constructor de la clase Persona.
     Persona(std::string nombre, int edad);
-    void mostrarInformacion();
+        // Método para mostrar la información de la persona.
 };
 
 #endif
 ```
 
 **Archivo Persona.cpp**
+
 ```cpp
 #include "Persona.h"
 #include <iostream>
@@ -106,6 +133,7 @@ void Persona::mostrarInformacion() {
 ```
 
 **Archivo main.cpp**
+
 ```cpp
 #include "Persona.h"
 
@@ -123,15 +151,75 @@ int main() {
 ```
 
 ## Compilación y ejecución de un programa en C++
+
+### Desde la línea de comandos
+
 Para compilar un programa con múltiples archivos, usa el siguiente comando:
+
 ```sh
 g++ main.cpp Persona.cpp -o programa
 ```
+
 Ejecuta el programa con:
+
 ```sh
 ./programa  # Linux/macOS
 programa.exe  # Windows
 ```
+
+### Desde CLion
+
+Para compilar y ejecutar un programa en CLion, sigue estos pasos utilizando el código de la clase `Persona` como ejemplo:
+
+1. **Abrir CLion y cargar el proyecto:**
+
+   - Crea un nuevo proyecto en CLion seleccionando la opción 'New Project'.
+   - Asegúrate de que el proyecto tenga un entorno de compilación configurado con CMake.
+   - Agrega los archivos `Persona.h`, `Persona.cpp` y `main.cpp` al directorio del proyecto.
+   - Verifica que CLion haya detectado correctamente el compilador y CMake.
+
+2. **Configurar CMake:**
+
+Cada línea en `CMakeLists.txt` tiene un propósito específico:
+
+1. `cmake_minimum_required(VERSION 3.10)`: Define la versión mínima de CMake requerida. Si un estudiante tiene una versión más antigua instalada, podría necesitar actualizar CMake.
+2. `project(MiProyecto)`: Establece el nombre del proyecto. Puede cambiarse a cualquier otro nombre según las preferencias del estudiante.
+3. `set(CMAKE_CXX_STANDARD 17)`: Especifica que se usará C++17. Si un estudiante desea usar otra versión, como C++20, puede modificar este valor.
+4. `add_executable(programa main.cpp Persona.cpp)`: Indica que se creará un ejecutable llamado `programa` a partir de `main.cpp` y `Persona.cpp`. Si el estudiante tiene más archivos fuente, debe agregarlos aquí.
+
+Revisa que los nombres de los archivos coincidan con los de tu proyecto y que su versión de CMake sea compatible con las configuraciones establecidas.
+
+- Abre `CMakeLists.txt` y asegúrate de que contenga:
+  ```cmake
+  cmake_minimum_required(VERSION 3.10)
+  project(MiProyecto)
+  set(CMAKE_CXX_STANDARD 17)
+  add_executable(programa main.cpp Persona.cpp)
+  ```
+- Guarda los cambios y permite que CLion actualice la configuración.
+
+3. **Seleccionar la configuración de ejecución:**
+
+   - En la parte superior derecha, selecciona `programa` como la configuración de ejecución.
+
+4. **Compilar el programa:**
+
+   - Haz clic en `Build` o presiona `Ctrl + F9` para compilar el proyecto.
+   - CLion mostrará en la consola mensajes de compilación exitosa o errores a corregir.
+
+5. **Ejecutar el programa:**
+
+   - Haz clic en `Run` o presiona `Shift + F10`.
+   - La salida esperada en la consola será:
+     ```
+     Nombre: Juan, Edad: 20
+     Nombre: Maria, Edad: 25
+     Nombre: Carlos, Edad: 30
+     ```
+
+## Actividad en casa
+
+Como actividad en casa, revisa las secciones de la 1 a la 21 del libro *Modern C++ for Absolute Beginners: A Friendly Introduction to the C++ Programming Language and C++11 to C++23 Standards*. Este libro está disponible para estudiantes de la Pontificia Universidad Javeriana de Cali en la biblioteca de O'Reilly en el siguiente enlace: [https://learning.oreilly.com/library/view/modern-c-for/9781484292747/](https://learning.oreilly.com/library/view/modern-c-for/9781484292747/).
 
 Con esta configuración, estarás listo para empezar a programar en C++ de manera eficiente. ¡Manos a la obra!
 
