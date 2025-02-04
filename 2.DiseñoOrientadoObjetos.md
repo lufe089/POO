@@ -383,7 +383,7 @@ classDiagram
     Propietario o-- Perro : tiene
     Perro --> Raza : pertenece a
     Perro --> Veterinario : es atendido por
-    Perro <-- VisitaVeterinaria : tiene
+    Perro <-- VisitaVeterinaria 
     Veterinario <-- VisitaVeterinaria : realiza
 ```
 
