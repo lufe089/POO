@@ -30,7 +30,7 @@ Revisa las guías disponibles en GitHub:
 
 ## Editor online
 
-Para realizar prácticas sin necesidad de instalar el compilador, puedes utilizar el siguiente editor en línea:
+Para realizar prácticas sin nstalar el compilador, puedes utilizar el siguiente editor en línea:
 
 - 💻 [OnlineGDB – Compilador C++](https://www.onlinegdb.com/online_c++_compiler)
 
