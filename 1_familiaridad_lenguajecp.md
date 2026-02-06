@@ -25,8 +25,8 @@ https://github.com/lufe089/cpp_familiaridad_tienda_videojuegos
 
 Revisa las guías disponibles en GitHub:
 
-- 📘 **Guía de Introducción a C++**  
-- 🔁 **Guía sobre C++: ciclos y arreglos**
+- 📘 **Guía de Introducción a C++**   [https://github.com/yoanpinzon/POO/blob/master/c%2B%2B1.md]
+- 🔁 **Guía sobre C++: ciclos y arreglos** [https://github.com/yoanpinzon/POO/blob/master/c%2B%2B2.md]
 
 ## Editor online
 
