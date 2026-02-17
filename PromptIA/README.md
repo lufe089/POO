@@ -12,7 +12,6 @@ Actualizado el: 17 feb 2026
 | PROMPT - AsistenteP1-2  | `if / else`, `switch / case / break`, `for`, `while`, `do-while`, funciones y procedimientos, parámetros por valor, retorno de valores, tipos primitivos, operadores aritméticos, relacionales y lógicos, comentarios simples (`//`) | **Aplicar y analizar** estructuras de control y funciones en C++, diseñando algoritmos sencillos, modularizando soluciones y razonando sobre el flujo de ejecución del programa. | Comprensión de variables, condicionales y ciclos simples en C++, capacidad para seguir la ejecución paso a paso de un algoritmo sencillo. ||
 | PROMPT - AsistenteP1-3  | 1. Gestión: Crear el vector y llenarlo con `.push_back()`.  2. Recorrer el vector de $0$ a $n-1$ y de regreso.  3. Inspección: Buscar el mayor, el menor o sumar valores del vector.  4. Saltos: Brincar posiciones (ej. solo índices pares).  5. Vecindad: Comparar `vec.at(i)` con su vecino `vec.at(i+1)`.  6. Espejo: Girar o invertir el vector sobre sí mismo. | **Aplicar y analizar** el uso de std::vector en C++, priorizando el acceso seguro con .at() y la organización del código en funciones |Lógica de ciclos y condicionales. Entender que un vector es una lista indexada que empieza en la posición 0. |https://gemini.google.com/share/fcdb776c1ec|
 
-0
 
 ## Instrucciones de uso
 Para usar cada asistente debes tomar el prompt y seguir estas instrucciones: 
