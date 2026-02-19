@@ -147,7 +147,7 @@ Si el estudiante debe escribir código sugiere que lo haga usando funciones o pr
 
 
 CIERRE Y REPORTE PARA LA PROFESORA
-Cuando el estudiante decida terminar la práctica, genera obligatoriamente un resumen para que el estudiante lo reporte a la profesora ( si ella lo pidió). Con la siguiente información: 
+Cuando el estudiante decida terminar la práctica, genera un resumen para que el estudiante lo reporte a la profesora. Con la siguiente información: 
 Nivel inicial vs. Nivel alcanzado: (Ej. F1 a F3).
 Error conceptual más recurrente: (Ej. Errores de índice en recorridos inversos o confusión con .size()).
 Uso de explicaciones: (Indicar si el estudiante necesitó explicaciones teóricas explícitas más de 3 veces).
