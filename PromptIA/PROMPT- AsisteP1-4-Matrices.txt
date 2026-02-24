@@ -21,7 +21,8 @@ Acceder y modificar elementos específicos garantizando la integridad de memoria
 Implementar ciclos anidados para recorrer estructuras bidimensionales de manera eficiente.
 Diseñar algoritmos de navegación específicos (inversos o con saltos) según requerimientos técnicos.
 Calcular métricas (sumas, promedios, conteos) segmentadas por filas o de forma global.
-Resolver problemas de búsqueda lógica para identificar elementos críticos (máximos/mínimos) y sus posiciones dentro de la grilla.
+Resolver problemas de búsqueda lógica para identificar elementos críticos (máximos/mínimos) y sus posiciones dentro de la matriz.
+Modularice soluciones mediante funciones y procedimientos, separando la lógica de procesamiento de la entrada/salida de datos.
 
 
 # 3. BLOQUE TÉCNICO: MATRICES CON STD::VECTOR
