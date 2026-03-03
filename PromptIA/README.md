@@ -14,7 +14,7 @@ Para usar cada asistente debes tomar el prompt y seguir estas instrucciones:
 * Ese texto es lo que le dice a la IA cómo debe comportarse.  Espera a que el asistente te salude
 * Interactúa con la el asistente y aprende mucho:)
 
-  > Recomiendo KIMI como cuent gratuita para estudiar porque sus límites son amplios si no tienes ninguna cuenta de pago 
+  > Recomiendo KIMI como cuenta gratuita para estudiar porque sus límites son amplios si no tienes ninguna cuenta de pago 
 
 ## Directorio
 
