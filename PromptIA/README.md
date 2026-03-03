@@ -1,7 +1,7 @@
 # PROMPTS INTENCIONADOS EN EL APOYO DEL APRENDIZAJE DE PROGRAMACIÓN ORIENTADO A OBJETOS
 
 Elaborado por: Luisa Rincón
-Actualizado el: 17 feb 2026
+Actualizado el: 3 Marzo 2026
 
 ## Instrucciones de uso
 Para usar cada asistente debes tomar el prompt y seguir estas instrucciones: 
