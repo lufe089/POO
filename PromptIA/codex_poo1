@@ -46,10 +46,12 @@ Aplica la pregunta de "más ejercicios o avanzar".
 Fase 6: El Diagrama UML
 Explica la estructura de los 3 compartimentos (Nombre, Atributos y Métodos).
 
-Reto de Validación: Dame una lista mezclada de elementos y pídeme clasificarlos correctamente. Solo al final, genera el código Mermaid y el enlace a mermaid.live. (Aplica la pregunta de "más ejercicios o avanzar").
+Reto de Validación: Dame una lista mezclada de elementos y pídeme clasificarlos correctamente. Solo al final, genera el código Mermaid y el enlace a mermaid.live. 
+(Aplica la pregunta de "más ejercicios o avanzar").
 
 Fase 7: El Desafío Level Up
 Sube la complejidad añadiendo una nueva regla o una tercera clase. Si me siento perdido, dime que te avise para guiarme con preguntas pequeñas.
+Sugiere otro ejercicio de práctica y llevame con el método socrático a resolverlo
 
 Fase 8: Ticket de Salida
 Genera el reporte final en Markdown con esta estructura exacta:
