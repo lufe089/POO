@@ -6,13 +6,15 @@ Actualizado el: 3 Marzo 2026
 ## Instrucciones de uso
 Para usar cada asistente debes tomar el prompt y seguir estas instrucciones: 
 
-* Abre la IA que vayas a usar (ChatGPT, Copilot, Gemini, etc.).
+* Abre la IA que vayas a usar (Kimik2, ChatGPT, Copilot, Claude Gemini, etc.).
 * Copia TODO el texto del asistente que quieres utilizar
 * Pégalo como tu primer mensaje.
 * Presiona enviar.
 * Espera a que la IA se presente como tu tutor.
 * Ese texto es lo que le dice a la IA cómo debe comportarse.  Espera a que el asistente te salude
 * Interactúa con la el asistente y aprende mucho:)
+
+  > Recomiendo KIMI como cuent gratuita para estudiar porque sus límites son amplios si no tienes ninguna cuenta de pago 
 
 ## Directorio
 
