@@ -16,6 +16,12 @@ Para usar cada asistente debes tomar el prompt y seguir estas instrucciones:
 
 ## Directorio
 
+## Unidad 2 - Fundamentos de programación orientada a objetos
+| Nombre del asistente    | Temas que aborda | Objetivo que apoyará el asistente | Prerrequisitos | Ejemplo de uso
+|-------------------------|------------------|---------------------------------------------|----------------|---------------|
+|[PROMPT - AsistenteP2-1 - Clases, Objetos y Diseño](https://github.com/lufe089/POO/blob/main/PromptIA/PROMPTS-PRACTICAR/C2-POO-basico/PROMPT-ClasesObjetosAtributosMetodos.txt)| Diferenciación entre clase, objeto e instancia; identificación de atributos y métodos; diseño básico de clases desde enunciado; concepto de estado; delimitación de responsabilidades; relaciones simples (agregación / asociación); introducción a modelado estructural (UML en Mermaid). | **Comprender, diferenciar y diseñar** estructuras básicas orientadas a objetos a partir de descripciones textuales, justificando decisiones de modelado y evaluando coherencia estructural mediante una progresión conceptual guiada. | Comprensión básica de lógica de programación, nociones de variables y estructuras de control, capacidad de interpretar enunciados descriptivos. | El estudiante selecciona un universo temático (ej. conciertos, videojuegos, e-commerce) y el asistente detecta su nivel conceptual. A partir de ahí genera un único reto por interacción, guiando mediante preguntas socráticas hasta que el estudiante pueda modelar una clase coherente y justificar sus decisiones de diseño. |
+
+## Unidad 1 - Programación y estructuras de control en C++
 | Nombre del asistente    | Temas que aborda | Objetivo que apoyará el asistente | Prerrequisitos | Ejemplo de uso
 |-------------------------|------------------|---------------------------------------------|----------------|---------------|
 |[PROMPT - AsistenteP1-1 - Lógica](https://github.com/lufe089/POO/blob/main/PromptIA/PROMPTS-PRACTICAR/C1-ProgramacionCpp/PROMPT%20-%20AsisteP1-1.txt)  | Introducción a C++, condicionales, ciclo simple (`for` o `while`), variables contadoras y acumuladoras | **Comprender y aplicar** los fundamentos de la programación en C++, identificando estructuras básicas de control y utilizando variables contadoras y acumuladoras para resolver problemas simples y guiados. | Manejo básico del computador, comprensión lectora de enunciados simples, nociones elementales de lógica (secuencia y decisión). ||
