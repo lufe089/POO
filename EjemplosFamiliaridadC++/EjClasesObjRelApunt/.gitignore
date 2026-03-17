@@ -25,12 +25,15 @@
 *.la
 *.a
 *.lib
-\cmake-build-debug-mingw
-/cmake-build-debug
 
 # Executables
 *.exe
 *.out
 *.app
-*.idea
+
+# Ignorar archivos y configuración de CLion (JetBrains)
+.idea/
+
+# Ignorar carpeta de compilación de CLion
+cmake-build-debug/
 
