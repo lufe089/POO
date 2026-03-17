@@ -9,7 +9,7 @@ void ControladorRobots::agregarRobot(Robot nuevoRobot){
 
 }
 void ControladorRobots::ampliarVidaRobotPosicion(int cantidadVida, int posicion){
-    if (this->inventarioRobots.size() >= posicion){ // Existe la posicion
+    if (this->inventarioRobots.size() > posicion){ // Existe la posicion
         this->inventarioRobots.at(posicion).incrementarPuntosVida(cantidadVida);
     }else{
         cout << "No existe esa posicion\n";
@@ -18,14 +18,11 @@ void ControladorRobots::ampliarVidaRobotPosicion(int cantidadVida, int posicion)
 
 void ControladorRobots::descargarRobot(int posicion){
 
-    if (this->inventarioRobots.size() >= posicion){ // Existe la posicion
+    if (this->inventarioRobots.size() > posicion){ // Existe la posicion
         this->inventarioRobots.at(posicion).descargar();
     }else{
         cout << "No existe esa posicion\n";
     }
-
-}
-void ControladorRobots::contarRobotsMuertos(){
 
 }
 

@@ -30,8 +30,11 @@ void mostrarMenu(){
         switch(opc){
 
             case 1: cout << "Agregando un robot nuevo con vida\n";
+                    int vidaUsuario;
+                    cout << "Ingrese los puntos de vida para el nuevo robot: ";
+                    cin >> vidaUsuario;
                     Robot nuevoRobot;
-                    nuevoRobot.setPuntosVida(500);
+                    nuevoRobot.setPuntosVida(vidaUsuario); //3525
                     fabricaRobots.agregarRobot(nuevoRobot);
                     cout << "Descargando el robot creado\n";
                     nuevoRobot.descargar();
@@ -40,7 +43,7 @@ void mostrarMenu(){
                     fabricaRobots.ampliarVidaRobotPosicion(1000, 0);
                     break;
             case 3:  cout << "Mostrando robots \n";
-                    fabricaRobots.mostrarRobots();
+                    fabricaRobots.mostrarRobots(); //  0 o que tiene 3525
                     break;
             case 4:   cout << "Descargando el robot de la primera posicion\n";
                     fabricaRobots.descargarRobot(0);
