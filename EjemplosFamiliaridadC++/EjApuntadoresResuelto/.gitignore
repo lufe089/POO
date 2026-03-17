@@ -1,0 +1,70 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Ignorar archivos y configuración de CLion (JetBrains)
+.idea/
+
+# Ignorar carpeta de compilación de CLion
+cmake-build-debug/
+
+# --- Archivos de compilación de Code::Blocks ---
+# Ejecutables
+*.exe
+*.bin
+*.out
+
+# Objetos y librerías estáticas
+*.o
+*.obj
+*.a
+*.lib
+
+# --- Carpetas generadas por Code::Blocks ---
+# Por defecto Code::Blocks crea carpetas "bin" y "obj"
+bin/
+obj/
+
+# --- Configuraciones locales de Code::Blocks ---
+# Archivos de espacio de trabajo y proyecto
+*.layout
+*.cbp.user
+
+# --- Archivos del sistema ---
+.DS_Store
+Thumbs.db
+
+# --- Opcional: Si usas una carpeta de build separada ---
+build/
+
+
+.dependent
