@@ -1,46 +1,57 @@
 # Taller de Programación: Gestión de Rendimiento - Club Tiburones
 
-> Practica: Identificación de clases, atributos, metodos, relaciones y codificación de un ejercicio con varias clases
+> **Práctica:** Identificación de clases, atributos, métodos, relaciones de asociación y gestión de objetos mediante copias.
 
-### Contexto Técnico
-El profesor Steven requiere una herramienta para centralizar el seguimiento de sus deportistas en el "Club Tiburones". El sistema actual presenta fallos de integridad: cuando un nadador entrena de forma independiente, el Club no registra ese avance, lo que genera reportes desfasados. 
+### Contexto del Proyecto
+El profesor Steven requiere una herramienta para organizar el seguimiento de sus deportistas en el **"Club Tiburones"**. El objetivo es que el sistema sea capaz de registrar el progreso de cada nadador y generar reportes consolidados que resuman el desempeño del equipo.
 
-El objetivo es implementar un sistema basado en **Agregación** que garantice la consistencia de los datos mediante el uso de una **"Única Fuente de Verdad"** en la memoria.
+En esta práctica, nos enfocaremos en la **encapsulación** y en cómo los objetos se comunican entre sí para mantener la información organizada utilizando el almacenamiento por valor (copias).
 
 ---
 
 ## 1. Requerimientos Funcionales
-El proyecto debe seguir una arquitectura modular de 5 archivos:
 
-### Clase Nadador (`nadador.h`, `nadador.cpp`)
-* Definir el atributo para el progreso acumulado (ej. `metrosRecorridos`).
-* Implementar un método para actualizar la distancia (ej. `entrenar`).
+### Clase `Nadador` (`nadador.h`, `nadador.cpp`)
+Representa a cada atleta de forma individual. Es la unidad básica de información del sistema.
+* **Atributos:** `nombre` (string) y `metrosRecorridos` (int).
+* **Métodos:** * **Constructor:** Debe inicializar el nombre del atleta y establecer sus metros iniciales en 0.
+    * **`entrenar(int metros)`:** Recibe una cantidad de metros y los suma al acumulado actual del nadador.
+    * **Getters:** Métodos para consultar el nombre y la distancia recorrida.
 
-### Clase ClubNatacion (`clubnatacion.h`, `clubnatacion.cpp`)
-* Mantener un listado de los atletas inscritos mediante un `vector`.
-* Incluir un método para registrar nadadores en el listado.
-* Generar un reporte que muestre el estado actual de todos los integrantes.
-
-### Módulo Principal (`main.cpp`)
-* Crear las instancias de los nadadores que entrenan en la escuela.
-* Controlar el flujo del programa mediante un menú de opciones (Agregar nadador, entrenar, mostrar reporte).
-* Validar que la información del club se actualice automáticamente tras cada entrenamiento.
+### Clase `ClubNatacion` (`clubnatacion.h`, `clubnatacion.cpp`)
+Es la entidad encargada de agrupar y gestionar a los deportistas.
+* **Atributo:** Un contenedor `std::vector<Nadador>` para almacenar la lista de atletas inscritos.
+* **Métodos:**
+    * **`registrarNadador(Nadador n)`:** Recibe un objeto de tipo `Nadador` y lo añade al vector. 
+    * **`generarReporte()`:** Recorre la lista de nadadores y muestra en pantalla el estado actual (nombre y metros) de cada uno.
 
 ---
 
-## 2. Restricción Técnica: Identidad del Objeto
-Para cumplir con el modelo de Agregación, el Club debe observar directamente a los nadadores originales definidos en el `main.cpp`.
+## 2. Guía Técnica: Flujo por Copia
+Para este ejercicio, utilizaremos el paso de objetos **por valor**. Esto implica que:
 
-* **Integridad de datos:** El Club no debe almacenar copias de los objetos. Si un nadador aumenta sus metros en el `main.cpp`, el ClubNatacion debe reflejar ese cambio automáticamente sin necesidad de una nueva actualización manual en el listado.
-* **Gestión de Memoria:** El `vector` del Club debe almacenar **direcciones de memoria (Punteros `*`)** en lugar de objetos independientes.
+1. Al crear un nadador en el `main.cpp`, este existe de forma independiente.
+2. Al llamar a `registrarNadador`, el Club recibe una **copia exacta** (un clon) del objeto y la guarda en su vector.
+3. El Club gestionará su propia lista de atletas basándose en los datos recibidos en el momento del registro.
 
 ---
 
 ## 3. Estructura del Proyecto
-La entrega debe constar de los siguientes archivos organizados de forma modular:
+El proyecto debe implementarse de forma modular, distribuyendo el código en los siguientes 5 archivos:
 
-* **`nadador.h`**: Definición de la clase y sus atributos privados.
-* **`nadador.cpp`**: Implementación de los métodos de entrenamiento.
-* **`clubnatacion.h`**: Definición del gestor y su contenedor de punteros.
-* **`clubnatacion.cpp`**: Lógica de registro y visualización de datos usando el operador flecha (`->`).
-* **`main.cpp`**: Punto de entrada donde se instancian los nadadores, se vinculan al club y se verifica la sincronización en tiempo real.
+* **`nadador.h`**: Definición de la clase y firmas de sus métodos.
+* **`nadador.cpp`**: Implementación de la lógica del atleta y sus entrenamientos.
+* **`clubnatacion.h`**: Definición del gestor y su contenedor de datos.
+* **`clubnatacion.cpp`**: Lógica para el registro y la visualización de reportes.
+* **`main.cpp`**: Punto de entrada del programa. Debe permitir:
+    1. Crear instancias de nadadores.
+    2. Registrar entrenamientos iniciales.
+    3. Inscribir a los nadadores en el club.
+    4. Mostrar el reporte final para verificar la correcta transferencia de datos.
+
+---
+
+## 4. Criterios de Evaluación
+* **Modularidad:** Correcta separación entre archivos de cabecera (`.h`) e implementación (`.cpp`).
+* **Encapsulación:** Uso apropiado de modificadores de acceso (`public`, `private`).
+* **Lógica:** Funcionamiento correcto del acumulador de metros y del reporte del club.
