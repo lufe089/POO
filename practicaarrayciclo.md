@@ -1,4 +1,15 @@
 # Ejercicios de ciclos de repetición definida con arreglos estáticos
+La idea de estos ejercicios es que practiques y te des la oportunidad de pensar antes de buscar una respuesta.
+
+**Si un ejercicio no sale a la primera, eso hace parte del proceso normal de aprender a programar**. Programar se aprende intentando construir una solución, encontrando errores, revisando qué ocurrió, haciendo cambios y volviendo a probar. Cada intento ayuda a desarrollar la forma de pensar que se necesita para resolver nuevos problemas.
+
+Esa dificultad puede ser útil. Cuando tienes que recordar cómo funciona un ciclo, decidir qué variable necesitas, identificar qué cambia en cada repetición o seguir paso a paso lo que ocurre en un arreglo, estás haciendo un esfuerzo que fortalece el aprendizaje.
+
+Por eso, intenta primero cada ejercicio por tu cuenta. Si algo falla, revisa el código, sigue algunas iteraciones del ciclo y piensa qué podría estar pasando.
+
+Si después de intentarlo necesitas ayuda, puedes usar el prompt para revisar tu solución. Este prompt no te entrega el código corregido, perote hace preguntas y te da pistas para que encuentres el problema y hagas tú mismo los cambios.
+
+La meta es practicar lo suficiente para que cada vez te resulte más natural reconocer estos patrones, detectar errores y construir tus propias soluciones.
 
 ## Propósito
 
@@ -60,7 +71,7 @@ Comienza observando mi imagen y dime brevemente qué entiendes que intenta hacer
 * Responda una a una las preguntas que haga el tutor.
 * Corrija usted mismo el código y vuelva a compartirlo si es necesario.
 
-La meta es encontrar y comprender los errores, **no obtener soluciones.**
+
 
 ## Parte 1. Patrones de acumulación
 
