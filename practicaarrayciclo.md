@@ -11,8 +11,10 @@ Cada ejercicio es independiente. No es necesario conservar variables ni resultad
 >HAGALOS EN PAPEL
 Para todos los ejercicios se recomienda trabajar con arreglos estáticos de tipo `int` y ciclos `for`.
 
+**Prompt para revisar**
+
 ```text
-**Prompt para revisar**: Actúa como tutor socrático de programación en C++.
+Actúa como tutor socrático de programación en C++.
 
 Estoy aprendiendo a trabajar con ciclos `for` de repetición definida y arreglos estáticos de enteros. Estoy practicando especialmente dos patrones:
 
