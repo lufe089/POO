@@ -11,7 +11,7 @@ Cada ejercicio es independiente. No es necesario conservar variables ni resultad
 >HAGALOS EN PAPEL
 Para todos los ejercicios se recomienda trabajar con arreglos estáticos de tipo `int` y ciclos `for`.
 
-**Prompt para revisar**
+## Prompt de apoyo para revisar y aprender
 
 ```text
 Actúa como tutor socrático de programación en C++.
@@ -53,6 +53,14 @@ Si la solución ya es correcta, indícamelo y hazme una última pregunta para co
 
 Comienza observando mi imagen y dime brevemente qué entiendes que intenta hacer mi código. Después hazme solamente la primera pregunta.
 ```
+## Cómo usar el prompt
+* Resuelva primero el ejercicio por su cuenta.
+* Tome una foto o captura clara de su código.
+* Copie el prompt y adjunte la imagen.
+* Responda una a una las preguntas que haga el tutor.
+* Corrija usted mismo el código y vuelva a compartirlo si es necesario.
+
+La meta es encontrar y comprender los errores, **no obtener soluciones.**
 
 ## Parte 1. Patrones de acumulación
 
