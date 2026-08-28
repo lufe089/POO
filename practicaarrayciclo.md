@@ -7,7 +7,7 @@ Esa dificultad puede ser útil. Cuando tienes que recordar cómo funciona un cic
 
 Por eso, intenta primero cada ejercicio por tu cuenta. Si algo falla, revisa el código, sigue algunas iteraciones del ciclo y piensa qué podría estar pasando.
 
-Si después de intentarlo necesitas ayuda, puedes usar el prompt para revisar tu solución. Este prompt no te entrega el código corregido, perote hace preguntas y te da pistas para que encuentres el problema y hagas tú mismo los cambios.
+Si después de intentarlo necesitas ayuda, puedes usar el prompt para revisar tu solución. Este prompt no te entrega el código corregido, pero te hace preguntas y te da pistas para que encuentres el problema y hagas tú mismo los cambios.
 
 La meta es practicar lo suficiente para que cada vez te resulte más natural reconocer estos patrones, detectar errores y construir tus propias soluciones.
 
