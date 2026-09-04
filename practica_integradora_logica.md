@@ -173,7 +173,7 @@ Observa:
 
 ```cpp
 #include <iostream>
-using namespace std;
+using std::cout;
 
 int contarMayores(int valores[], int cantidad, int limite) {
     int contador = 0;
@@ -258,7 +258,7 @@ Se necesita calcular el promedio y determinar cuántos estudiantes tienen una ca
 
 ```cpp
 #include <iostream>
-using namespace std;
+using std::cout;
 
 int main() {
     float notas[6] = {3.5, 4.2, 2.8, 4.7, 3.9, 2.5};
