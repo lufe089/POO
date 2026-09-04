@@ -865,3 +865,1146 @@ No aumentes mi nivel solamente porque corregí algo siguiendo una pista. Comprue
 
 Termina indicándome qué aspecto de mi razonamiento debería practicar más, sin darme un nuevo ejercicio resuelto.
 ```
+
+# Soluciones [ Consultar después de haber intentando solucionar los ejercicios]
+
+> Las soluciones de los ejercicios abiertos son propuestas posibles. Pueden existir otras respuestas correctas si la lógica responde al problema y las decisiones pueden justificarse.
+
+## Mini práctica. Tabla de seguimiento
+
+El código era:
+
+```cpp
+int datos[5] = {7, 2, 10, 4, 8};
+int suma = 0;
+
+for (int i = 0; i < 5; i++) {
+    if (datos[i] >= 7) {
+        suma += datos[i];
+    }
+}
+```
+
+### Tabla de seguimiento
+
+Conviene observar `i`, `datos[i]`, el resultado de la condición y `suma`.
+
+| `i` | `datos[i]` | ¿`datos[i] >= 7`? | `suma` |
+| --: | ---------: | :---------------: | -----: |
+|   0 |          7 |     Verdadero     |      7 |
+|   1 |          2 |       Falso       |      7 |
+|   2 |         10 |     Verdadero     |     17 |
+|   3 |          4 |       Falso       |     17 |
+|   4 |          8 |     Verdadero     |     25 |
+
+El valor final es:
+
+```text
+suma = 25
+```
+
+El fragmento **suma únicamente los valores del arreglo que son mayores o iguales a 7**:
+
+```text
+7 + 10 + 8 = 25
+```
+
+Aquí aparece el patrón:
+
+```text
+recorrer → evaluar una condición → acumular si se cumple
+```
+
+## Ejercicio 1. Sigue la ejecución
+
+La función es:
+
+```cpp
+int contarMayores(int valores[], int cantidad, int limite) {
+    int contador = 0;
+
+    for (int i = 0; i < cantidad; i++) {
+        if (valores[i] > limite) {
+            contador++;
+        }
+    }
+
+    return contador;
+}
+```
+
+y se llama así:
+
+```cpp
+int temperaturas[7] = {24, 31, 28, 33, 26, 35, 29};
+int resultado = contarMayores(temperaturas, 7, 30);
+```
+
+### Resultado
+
+Los valores mayores que `30` son:
+
+```text
+31
+33
+35
+```
+
+Por tanto:
+
+```text
+Resultado: 3
+```
+
+### Tabla de seguimiento
+
+| `i` | `valores[i]` | ¿`valores[i] > 30`? | `contador` |
+| --: | -----------: | :-----------------: | ---------: |
+|   0 |           24 |        Falso        |          0 |
+|   1 |           31 |      Verdadero      |          1 |
+|   2 |           28 |        Falso        |          1 |
+|   3 |           33 |      Verdadero      |          2 |
+|   4 |           26 |        Falso        |          2 |
+|   5 |           35 |      Verdadero      |          3 |
+|   6 |           29 |        Falso        |          3 |
+
+### Explicación
+
+`i` representa la posición del arreglo que se está examinando.
+
+Se utiliza repetición definida porque se conoce cuántos elementos deben recorrerse. La función recibe esa cantidad mediante:
+
+```cpp
+int cantidad
+```
+
+El condicional:
+
+```cpp
+valores[i] > limite
+```
+
+permite decidir si el elemento actual debe aumentar el contador.
+
+La función recibe:
+
+* el arreglo;
+* la cantidad de elementos válidos;
+* el límite de comparación.
+
+Retorna cuántos valores superan ese límite.
+
+Si se llama:
+
+```cpp
+contarMayores(temperaturas, 7, 28);
+```
+
+cumplen:
+
+```text
+31
+33
+35
+29
+```
+
+Por tanto:
+
+```text
+Resultado: 4
+```
+
+## Ejercicio 2. El programa compila, pero algo está mal
+
+El fragmento problemático es:
+
+```cpp
+for (int i = 0; i < 6; i++) {
+    suma += notas[i];
+    promedio = suma / 6;
+
+    if (notas[i] > promedio) {
+        superiores++;
+    }
+}
+```
+
+### ¿Cuál es el problema?
+
+El promedio definitivo solo puede conocerse **después de sumar todas las notas**.
+
+En la primera iteración:
+
+```text
+suma = 3.5
+```
+
+y luego:
+
+```text
+promedio = 3.5 / 6
+         ≈ 0.5833
+```
+
+La comparación termina siendo:
+
+```cpp
+3.5 > 0.5833
+```
+
+Ese valor todavía no representa el promedio del grupo.
+
+### Tabla de seguimiento
+
+| `i` | `notas[i]` | `suma` | `promedio` | ¿`notas[i] > promedio`? | `superiores` |
+| --: | ---------: | -----: | ---------: | :---------------------: | -----------: |
+|   0 |        3.5 |    3.5 |     0.5833 |        Verdadero        |            1 |
+|   1 |        4.2 |    7.7 |     1.2833 |        Verdadero        |            2 |
+|   2 |        2.8 |   10.5 |       1.75 |        Verdadero        |            3 |
+
+La dificultad está en que se compara cada nota contra un promedio parcial.
+
+### Estrategia correcta
+
+```text
+1. Sumar todas las notas.
+2. Calcular el promedio definitivo.
+3. Recorrer nuevamente las notas.
+4. Comparar cada nota contra ese promedio.
+```
+
+### Solución
+
+```cpp
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
+int main() {
+    float notas[6] = {3.5, 4.2, 2.8, 4.7, 3.9, 2.5};
+
+    float suma = 0;
+    float promedio;
+    int superiores = 0;
+
+    for (int i = 0; i < 6; i++) {
+        suma += notas[i];
+    }
+
+    promedio = suma / 6;
+
+    for (int i = 0; i < 6; i++) {
+        if (notas[i] > promedio) {
+            superiores++;
+        }
+    }
+
+    cout << "Promedio: " << promedio << endl;
+    cout << "Superiores al promedio: " << superiores << endl;
+
+    return 0;
+}
+```
+
+La suma es `21.6`, el promedio es `3.6` y las notas superiores son `4.2`, `4.7` y `3.9`.
+
+```text
+Promedio: 3.6
+Superiores al promedio: 3
+```
+
+El error de lógica consistía en **usar un dato antes de haber terminado de calcularlo**.
+
+## Ejercicio 3. Divide el problema en tareas
+
+### Respuestas conceptuales
+
+`ingresarNotas()` puede ser `void` porque modifica directamente el contenido del arreglo recibido.
+
+`calcularPromedio()` necesita retornar un valor porque el promedio será utilizado posteriormente.
+
+Antes de contar las notas superiores al promedio, primero debe conocerse el promedio.
+
+La dependencia es:
+
+```text
+ingresar
+   ↓
+mostrar
+   ↓
+calcular promedio
+   ↓
+contar superiores
+```
+
+### Solución
+
+```cpp
+#include <iostream>
+
+using std::cin;
+using std::cout;
+using std::endl;
+
+void ingresarNotas(float notas[], int cantidad) {
+    for (int i = 0; i < cantidad; i++) {
+        cout << "Nota " << i + 1 << ": ";
+        cin >> notas[i];
+    }
+}
+
+void mostrarNotas(float notas[], int cantidad) {
+    cout << "\nNotas registradas:" << endl;
+
+    for (int i = 0; i < cantidad; i++) {
+        cout << "Nota " << i + 1 << ": " << notas[i] << endl;
+    }
+}
+
+float calcularPromedio(float notas[], int cantidad) {
+    float suma = 0;
+
+    for (int i = 0; i < cantidad; i++) {
+        suma += notas[i];
+    }
+
+    return suma / cantidad;
+}
+
+int contarSuperiores(float notas[], int cantidad, float promedio) {
+    int contador = 0;
+
+    for (int i = 0; i < cantidad; i++) {
+        if (notas[i] > promedio) {
+            contador++;
+        }
+    }
+
+    return contador;
+}
+
+int main() {
+    const int CANTIDAD = 10;
+    float notas[CANTIDAD];
+
+    ingresarNotas(notas, CANTIDAD);
+    mostrarNotas(notas, CANTIDAD);
+
+    float promedio = calcularPromedio(notas, CANTIDAD);
+    int superiores = contarSuperiores(notas, CANTIDAD, promedio);
+
+    cout << "\nPromedio: " << promedio << endl;
+    cout << "Notas superiores al promedio: "
+         << superiores << endl;
+
+    return 0;
+}
+```
+
+### Responsabilidad de cada función
+
+| Función / procedimiento | Recibe                       | Retorna | Responsabilidad         |
+| ----------------------- | ---------------------------- | ------- | ----------------------- |
+| `ingresarNotas()`       | arreglo y cantidad           | nada    | llenar el arreglo       |
+| `mostrarNotas()`        | arreglo y cantidad           | nada    | mostrar los valores     |
+| `calcularPromedio()`    | arreglo y cantidad           | `float` | calcular el promedio    |
+| `contarSuperiores()`    | arreglo, cantidad y promedio | `int`   | contar notas superiores |
+
+### Resultado con los datos sugeridos
+
+Datos:
+
+```text
+3.2  4.5  2.8  3.7  4.1  3.0  4.8  2.5  3.9  4.0
+```
+
+La suma es `36.5` y el promedio:
+
+```text
+3.65
+```
+
+Superan el promedio:
+
+```text
+4.5
+3.7
+4.1
+4.8
+3.9
+4.0
+```
+
+Cantidad:
+
+```text
+6
+```
+
+La solución realiza cuatro recorridos completos del arreglo: ingresar, mostrar, calcular y contar.
+
+Gracias a que las funciones reciben `cantidad`, si se pasa de 10 a 20 notas solo debe cambiar:
+
+```cpp
+const int CANTIDAD = 20;
+```
+
+## Ejercicio 4. No todas las repeticiones terminan igual
+
+### Elección de ciclos
+
+| Situación          | ¿Cantidad conocida? | ¿Qué determina el fin?        | Ciclo sugerido       |
+| ------------------ | :-----------------: | ----------------------------- | -------------------- |
+| Recorrer las notas |          Sí         | procesar `cantidad` elementos | `for`                |
+| Realizar consultas |          No         | decisión del usuario          | `while` o `do-while` |
+
+Para recorrer el arreglo conocemos la cantidad de elementos.
+
+Para las consultas no sabemos cuántas realizará el usuario.
+
+### Función de consulta
+
+```cpp
+float obtenerNota(float notas[], int posicion) {
+    return notas[posicion - 1];
+}
+```
+
+Se resta `1` porque el usuario utiliza posiciones desde `1`, mientras que el arreglo utiliza índices desde `0`.
+
+La posición debe validarse antes:
+
+```cpp
+posicion >= 1 && posicion <= CANTIDAD
+```
+
+### Solución
+
+```cpp
+#include <iostream>
+
+using std::cin;
+using std::cout;
+using std::endl;
+
+void ingresarNotas(float notas[], int cantidad) {
+    for (int i = 0; i < cantidad; i++) {
+        cout << "Nota " << i + 1 << ": ";
+        cin >> notas[i];
+    }
+}
+
+void mostrarNotas(float notas[], int cantidad) {
+    for (int i = 0; i < cantidad; i++) {
+        cout << "Nota " << i + 1 << ": "
+             << notas[i] << endl;
+    }
+}
+
+float calcularPromedio(float notas[], int cantidad) {
+    float suma = 0;
+
+    for (int i = 0; i < cantidad; i++) {
+        suma += notas[i];
+    }
+
+    return suma / cantidad;
+}
+
+int contarSuperiores(float notas[], int cantidad, float promedio) {
+    int contador = 0;
+
+    for (int i = 0; i < cantidad; i++) {
+        if (notas[i] > promedio) {
+            contador++;
+        }
+    }
+
+    return contador;
+}
+
+float obtenerNota(float notas[], int posicion) {
+    return notas[posicion - 1];
+}
+
+int main() {
+    const int CANTIDAD = 10;
+    float notas[CANTIDAD];
+
+    ingresarNotas(notas, CANTIDAD);
+    mostrarNotas(notas, CANTIDAD);
+
+    float promedio = calcularPromedio(notas, CANTIDAD);
+
+    cout << "\nPromedio: " << promedio << endl;
+    cout << "Notas superiores al promedio: "
+         << contarSuperiores(notas, CANTIDAD, promedio)
+         << endl;
+
+    char continuar = 'S';
+
+    while (continuar == 'S' || continuar == 's') {
+        int posicion;
+
+        cout << "\nPosicion que desea consultar: ";
+        cin >> posicion;
+
+        if (posicion >= 1 && posicion <= CANTIDAD) {
+            cout << "Calificacion: "
+                 << obtenerNota(notas, posicion)
+                 << endl;
+        } else {
+            cout << "Posicion invalida." << endl;
+        }
+
+        cout << "Desea realizar otra consulta? (S/N): ";
+        cin >> continuar;
+    }
+
+    return 0;
+}
+```
+
+Una posición `0` o `15` debe rechazarse porque no pertenece al rango válido.
+
+La elección del ciclo depende de **qué controla la terminación**.
+
+## Ejercicio 5. Control de producción
+
+> Esta es una solución posible. Pueden existir otras divisiones correctas de funciones y procedimientos.
+
+### Datos y repeticiones
+
+El programa necesita:
+
+```cpp
+float produccion[30];
+```
+
+y una variable:
+
+```cpp
+int cantidad;
+```
+
+`cantidad` indica cuántas posiciones contienen información válida.
+
+El registro termina cuando el usuario decide detenerse o cuando se alcanza la capacidad.
+
+Los recorridos del arreglo tienen una cantidad conocida y pueden usar `for`.
+
+El menú se repite hasta seleccionar `0`, por lo que puede utilizar `do-while`.
+
+### Diseño posible
+
+| Tarea                | Tipo          | Recibe                       | Retorna             |
+| -------------------- | ------------- | ---------------------------- | ------------------- |
+| Registrar producción | función       | arreglo y capacidad          | cantidad registrada |
+| Mostrar datos        | procedimiento | arreglo y cantidad           | nada                |
+| Calcular promedio    | función       | arreglo y cantidad           | promedio            |
+| Encontrar mayor      | función       | arreglo y cantidad           | producción mayor    |
+| Contar bajo promedio | función       | arreglo, cantidad y promedio | cantidad            |
+| Consultar día        | procedimiento | arreglo y cantidad           | nada                |
+
+### Solución
+
+```cpp
+#include <iostream>
+
+using std::cin;
+using std::cout;
+using std::endl;
+
+int registrarProduccion(float produccion[], int capacidad) {
+    int cantidad = 0;
+    char continuar = 'S';
+
+    while (
+        cantidad < capacidad &&
+        (continuar == 'S' || continuar == 's')
+    ) {
+        cout << "Produccion del dia "
+             << cantidad + 1 << ": ";
+
+        cin >> produccion[cantidad];
+        cantidad++;
+
+        if (cantidad < capacidad) {
+            cout << "Desea registrar otro dia? (S/N): ";
+            cin >> continuar;
+        }
+    }
+
+    return cantidad;
+}
+
+void mostrarProduccion(float produccion[], int cantidad) {
+    for (int i = 0; i < cantidad; i++) {
+        cout << "Dia " << i + 1
+             << ": " << produccion[i]
+             << endl;
+    }
+}
+
+float calcularPromedio(float produccion[], int cantidad) {
+    float suma = 0;
+
+    for (int i = 0; i < cantidad; i++) {
+        suma += produccion[i];
+    }
+
+    return suma / cantidad;
+}
+
+float encontrarMayor(float produccion[], int cantidad) {
+    float mayor = produccion[0];
+
+    for (int i = 1; i < cantidad; i++) {
+        if (produccion[i] > mayor) {
+            mayor = produccion[i];
+        }
+    }
+
+    return mayor;
+}
+
+int contarBajoPromedio(
+    float produccion[],
+    int cantidad,
+    float promedio
+) {
+    int contador = 0;
+
+    for (int i = 0; i < cantidad; i++) {
+        if (produccion[i] < promedio) {
+            contador++;
+        }
+    }
+
+    return contador;
+}
+
+void consultarDia(float produccion[], int cantidad) {
+    int dia;
+
+    cout << "Dia que desea consultar: ";
+    cin >> dia;
+
+    if (dia >= 1 && dia <= cantidad) {
+        cout << "Produccion del dia "
+             << dia << ": "
+             << produccion[dia - 1]
+             << endl;
+    } else {
+        cout << "Dia invalido." << endl;
+    }
+}
+
+int main() {
+    const int CAPACIDAD = 30;
+    float produccion[CAPACIDAD];
+
+    int cantidad =
+        registrarProduccion(produccion, CAPACIDAD);
+
+    int opcion;
+
+    do {
+        cout << "\n--- MENU ---" << endl;
+        cout << "1. Mostrar produccion registrada" << endl;
+        cout << "2. Calcular promedio" << endl;
+        cout << "3. Mostrar produccion mayor" << endl;
+        cout << "4. Contar dias por debajo del promedio" << endl;
+        cout << "5. Consultar un dia" << endl;
+        cout << "0. Terminar" << endl;
+        cout << "Opcion: ";
+        cin >> opcion;
+
+        if (opcion == 1) {
+            mostrarProduccion(produccion, cantidad);
+
+        } else if (opcion == 2) {
+            cout << "Promedio: "
+                 << calcularPromedio(produccion, cantidad)
+                 << endl;
+
+        } else if (opcion == 3) {
+            cout << "Produccion mayor: "
+                 << encontrarMayor(produccion, cantidad)
+                 << endl;
+
+        } else if (opcion == 4) {
+            float promedio =
+                calcularPromedio(produccion, cantidad);
+
+            cout << "Dias por debajo del promedio: "
+                 << contarBajoPromedio(
+                        produccion,
+                        cantidad,
+                        promedio
+                    )
+                 << endl;
+
+        } else if (opcion == 5) {
+            consultarDia(produccion, cantidad);
+
+        } else if (opcion != 0) {
+            cout << "Opcion invalida." << endl;
+        }
+
+    } while (opcion != 0);
+
+    return 0;
+}
+```
+
+### Explicación de las decisiones
+
+`registrarProduccion()` retorna la cantidad porque el resto del programa necesita saber cuántas posiciones fueron utilizadas.
+
+`encontrarMayor()` inicia con:
+
+```cpp
+float mayor = produccion[0];
+```
+
+Así comienza con un dato que efectivamente existe. Después recorre desde la posición `1`.
+
+Para contar valores bajo el promedio, primero debe calcularse el promedio.
+
+### Casos de prueba
+
+Con un solo valor:
+
+```text
+100
+```
+
+se espera:
+
+```text
+Promedio = 100
+Mayor = 100
+Días bajo promedio = 0
+```
+
+Con:
+
+```text
+100
+120
+80
+100
+```
+
+se espera:
+
+```text
+Promedio = 100
+Mayor = 120
+Días bajo promedio = 1
+```
+
+También deben probarse el primer día, el último día y una posición inexistente.
+
+## Ejercicio 6. Registro de tiempos de una competencia
+
+> Esta es una posible solución. Otras divisiones de responsabilidades también pueden ser correctas.
+
+Para concretar el requerimiento de “mostrar los tiempos que cumplen una condición”, se utilizará un límite y se mostrarán los tiempos menores que ese valor.
+
+### Diseño posible
+
+| Tarea                          | Tipo          |
+| ------------------------------ | ------------- |
+| registrar tiempos              | función       |
+| mostrar tiempos                | procedimiento |
+| calcular promedio              | función       |
+| encontrar mejor tiempo         | función       |
+| contar menores que un límite   | función       |
+| buscar un tiempo               | función       |
+| mostrar tiempos bajo un límite | procedimiento |
+
+### Solución
+
+```cpp
+#include <iostream>
+
+using std::cin;
+using std::cout;
+using std::endl;
+
+int registrarTiempos(float tiempos[], int capacidad) {
+    int cantidad = 0;
+    char continuar = 'S';
+
+    while (
+        cantidad < capacidad &&
+        (continuar == 'S' || continuar == 's')
+    ) {
+        cout << "Tiempo del deportista "
+             << cantidad + 1 << ": ";
+
+        cin >> tiempos[cantidad];
+        cantidad++;
+
+        if (cantidad < capacidad) {
+            cout << "Desea registrar otro tiempo? (S/N): ";
+            cin >> continuar;
+        }
+    }
+
+    return cantidad;
+}
+
+void mostrarTiempos(float tiempos[], int cantidad) {
+    for (int i = 0; i < cantidad; i++) {
+        cout << "Deportista "
+             << i + 1
+             << ": "
+             << tiempos[i]
+             << endl;
+    }
+}
+
+float calcularPromedio(float tiempos[], int cantidad) {
+    float suma = 0;
+
+    for (int i = 0; i < cantidad; i++) {
+        suma += tiempos[i];
+    }
+
+    return suma / cantidad;
+}
+
+float encontrarMejorTiempo(float tiempos[], int cantidad) {
+    float mejor = tiempos[0];
+
+    for (int i = 1; i < cantidad; i++) {
+        if (tiempos[i] < mejor) {
+            mejor = tiempos[i];
+        }
+    }
+
+    return mejor;
+}
+
+int contarInferiores(
+    float tiempos[],
+    int cantidad,
+    float limite
+) {
+    int contador = 0;
+
+    for (int i = 0; i < cantidad; i++) {
+        if (tiempos[i] < limite) {
+            contador++;
+        }
+    }
+
+    return contador;
+}
+
+bool existeTiempo(
+    float tiempos[],
+    int cantidad,
+    float buscado
+) {
+    for (int i = 0; i < cantidad; i++) {
+        if (tiempos[i] == buscado) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+void mostrarInferiores(
+    float tiempos[],
+    int cantidad,
+    float limite
+) {
+    for (int i = 0; i < cantidad; i++) {
+        if (tiempos[i] < limite) {
+            cout << tiempos[i] << endl;
+        }
+    }
+}
+
+int main() {
+    const int CAPACIDAD = 20;
+    float tiempos[CAPACIDAD];
+
+    int cantidad =
+        registrarTiempos(tiempos, CAPACIDAD);
+
+    int opcion;
+
+    do {
+        cout << "\n--- MENU ---" << endl;
+        cout << "1. Mostrar tiempos" << endl;
+        cout << "2. Calcular promedio" << endl;
+        cout << "3. Encontrar mejor tiempo" << endl;
+        cout << "4. Contar tiempos inferiores a un valor" << endl;
+        cout << "5. Buscar un tiempo" << endl;
+        cout << "6. Mostrar tiempos inferiores a un valor" << endl;
+        cout << "0. Terminar" << endl;
+        cout << "Opcion: ";
+        cin >> opcion;
+
+        if (opcion == 1) {
+            mostrarTiempos(tiempos, cantidad);
+
+        } else if (opcion == 2) {
+            cout << "Promedio: "
+                 << calcularPromedio(tiempos, cantidad)
+                 << endl;
+
+        } else if (opcion == 3) {
+            cout << "Mejor tiempo: "
+                 << encontrarMejorTiempo(tiempos, cantidad)
+                 << endl;
+
+        } else if (opcion == 4) {
+            float limite;
+
+            cout << "Tiempo limite: ";
+            cin >> limite;
+
+            cout << "Cantidad: "
+                 << contarInferiores(
+                        tiempos,
+                        cantidad,
+                        limite
+                    )
+                 << endl;
+
+        } else if (opcion == 5) {
+            float buscado;
+
+            cout << "Tiempo que desea buscar: ";
+            cin >> buscado;
+
+            if (existeTiempo(tiempos, cantidad, buscado)) {
+                cout << "El tiempo fue registrado." << endl;
+            } else {
+                cout << "El tiempo no fue registrado." << endl;
+            }
+
+        } else if (opcion == 6) {
+            float limite;
+
+            cout << "Tiempo limite: ";
+            cin >> limite;
+
+            mostrarInferiores(
+                tiempos,
+                cantidad,
+                limite
+            );
+
+        } else if (opcion != 0) {
+            cout << "Opcion invalida." << endl;
+        }
+
+    } while (opcion != 0);
+
+    return 0;
+}
+```
+
+### Explicación de las decisiones
+
+El mejor tiempo es el menor:
+
+```cpp
+if (tiempos[i] < mejor)
+```
+
+porque en una competencia medida por tiempo, un valor menor representa normalmente un mejor desempeño.
+
+`existeTiempo()` retorna `bool` porque responde una pregunta con dos posibles resultados:
+
+```cpp
+true
+false
+```
+
+La función puede terminar apenas encuentra el dato:
+
+```cpp
+return true;
+```
+
+Si termina todo el recorrido sin encontrarlo:
+
+```cpp
+return false;
+```
+
+Para este nivel puede aceptarse:
+
+```cpp
+tiempos[i] == buscado
+```
+
+aunque más adelante conviene trabajar las precauciones necesarias para comparar valores `float`.
+
+### Casos de prueba
+
+Con:
+
+```text
+12.5
+11.8
+13.2
+10.9
+12.0
+```
+
+el promedio es:
+
+```text
+12.08
+```
+
+El mejor tiempo:
+
+```text
+10.9
+```
+
+Los tiempos menores que `12` son:
+
+```text
+11.8
+10.9
+```
+
+por tanto la cantidad es:
+
+```text
+2
+```
+
+Buscar `13.2` debe indicar que existe; buscar `9.5`, que no fue registrado.
+
+Para un límite de `12.5`, deben mostrarse:
+
+```text
+11.8
+10.9
+12.0
+```
+
+## Patrones que deberían quedar consolidados
+
+### Recorrer y acumular
+
+```cpp
+for (...) {
+    suma += arreglo[i];
+}
+```
+
+### Recorrer y contar
+
+```cpp
+for (...) {
+    if (condicion) {
+        contador++;
+    }
+}
+```
+
+### Buscar un extremo
+
+```cpp
+float mayor = arreglo[0];
+
+for (int i = 1; i < cantidad; i++) {
+    if (arreglo[i] > mayor) {
+        mayor = arreglo[i];
+    }
+}
+```
+
+### Buscar un elemento
+
+```cpp
+for (...) {
+    if (arreglo[i] == buscado) {
+        return true;
+    }
+}
+```
+
+### Repetición definida
+
+```cpp
+for (int i = 0; i < cantidad; i++)
+```
+
+### Repetición indefinida
+
+```cpp
+while (continuar == 'S')
+```
+
+o:
+
+```cpp
+do {
+    ...
+} while (opcion != 0);
+```
+
+### Capacidad frente a cantidad utilizada
+
+```cpp
+const int CAPACIDAD = 30;
+```
+
+no significa que existan 30 datos registrados.
+
+La variable:
+
+```cpp
+int cantidad;
+```
+
+indica cuántos elementos contienen información válida.
+
+### Función que retorna un resultado
+
+```cpp
+float calcularPromedio(...);
+int contarInferiores(...);
+bool existeTiempo(...);
+```
+
+### Procedimiento
+
+```cpp
+void mostrarTiempos(...);
+void mostrarProduccion(...);
+```
+
+## Criterios para revisar soluciones alternativas
+
+| Aspecto       | Pregunta de revisión                                 |
+| ------------- | ---------------------------------------------------- |
+| Datos         | ¿Procesa únicamente las posiciones válidas?          |
+| Límites       | ¿Evita accesos fuera del arreglo?                    |
+| Ciclos        | ¿La condición de terminación representa el problema? |
+| Condicionales | ¿Las decisiones corresponden con el enunciado?       |
+| Funciones     | ¿Cada función tiene una tarea comprensible?          |
+| Parámetros    | ¿Recibe la información que necesita?                 |
+| Retorno       | ¿El tipo de retorno corresponde al resultado?        |
+| Dependencias  | ¿Calcula la información antes de utilizarla?         |
+| Pruebas       | ¿Considera casos normales y límite?                  |
+| Comprensión   | ¿El estudiante puede explicar sus decisiones?        |
+
+En los ejercicios 5 y 6, una solución diferente puede considerarse correcta si cumple el comportamiento solicitado y el puedes justificar el diseño.
