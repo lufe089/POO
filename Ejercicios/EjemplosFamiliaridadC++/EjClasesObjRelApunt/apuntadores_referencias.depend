@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1773755149 source:w:\git\clases\poo\ejemplosfamiliaridadc++\ejclasesobjrelapunt\main.cpp
+	<iostream>
+	"robot.h"
+	"controladorrobots.h"
+
+1773725471 w:\git\clases\poo\ejemplosfamiliaridadc++\ejclasesobjrelapunt\robot.h
+
+1773725656 w:\git\clases\poo\ejemplosfamiliaridadc++\ejclasesobjrelapunt\controladorrobots.h
+	"robot.h"
+	<iostream>
+	<vector>
+
+1773725456 source:w:\git\clases\poo\ejemplosfamiliaridadc++\ejclasesobjrelapunt\robot.cpp
+	"robot.h"
+
+1773754058 source:w:\git\clases\poo\ejemplosfamiliaridadc++\ejclasesobjrelapunt\controladorrobots.cpp
+	"controladorrobots.h"
+
