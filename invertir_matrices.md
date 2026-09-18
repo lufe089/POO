@@ -1,0 +1,469 @@
+# 🧩 Matrices en C++, recorridos inversos, intercambios y diagonales
+
+Una matriz organiza información en filas y columnas. Para recorrerla, no basta con saber usar dos ciclos, también es necesario reconocer qué posición representa cada par de índices. En esta guía se trabaja con recorridos inversos, intercambios de valores y diagonales, tres situaciones que ayudan a leer una matriz con intención.
+
+Esta guía es la segunda parte, para entenderla mes muy importante que ya hubieras desarrollado la guía previa, cuyo repositorio esta disponible [Aquí](https://github.com/300CIS017-Object-Oriented-Programming/matrices_ciclos_anidados)
+
+> **Pregunta de partida:** si una matriz se lee con dos índices, ¿qué debe cambiar para recorrerla desde el final, modificar algunas posiciones y reconocer sus diagonales?
+
+## 🎯 Objetivo de aprendizaje
+
+Al finalizar la guía, podrá aplicar recorridos de matrices con ciclos anidados para mostrar datos de atrás hacia adelante, intercambiar posiciones bajo condiciones definidas y reconocer las diagonales de una matriz cuadrada, mediante procedimientos en C++ que utilicen los índices `i` y `j`.
+
+Al completar las actividades, podrá:
+
+1. Recorrer una matriz desde la última posición hasta la primera e identificar qué índice cambia primero.
+2. Intercambiar dos posiciones cuando se cumple una condición sobre sus índices o sus valores.
+3. Mostrar la diagonal principal y la diagonal secundaria de una matriz cuadrada.
+4. Explicar con una tabla de seguimiento qué ocurre en un recorrido con ciclos anidados.
+
+## ⏱️ Tiempo de estudio estimado
+
+La dedicación aproximada para completar la guía es de **seis horas**. El tiempo puede variar mientras se realizan pruebas, se corrigen errores y se explican los resultados obtenidos.
+
+| Bloque de trabajo | Actividades | Tiempo estimado |
+| --- | --- | ---: |
+| Reconocer el patrón | Lectura de los recorridos, el ejemplo base y la tabla de seguimiento. | 2 horas |
+| Aplicar los patrones | Ejercicios de recorridos, intercambios y diagonales. | 2 horas y 30 minutos |
+| Transferir e integrar | Ejercicios de transferencia y reto integrador. | 1 hora y 30 minutos |
+| **Total** | Desarrollo completo de la guía. | **6 horas** |
+
+## 🧭 Recorrido de la guía
+
+1. Recorridos de una matriz desde la esquina inferior derecha hasta la superior izquierda.
+2. Intercambios de valores según la posición o el valor almacenado.
+3. Diagonal principal y diagonal secundaria de una matriz cuadrada.
+4. Ejercicios graduales, ejercicios de transferencia y un reto integrador.
+5. Una tabla de seguimiento y un prompt para revisar el razonamiento sin pedir la solución completa.
+
+---
+
+## 1. 🧠 Antes de escribir código, reconocer la matriz
+
+Una matriz permite organizar datos en filas y columnas. Puede representar los puntajes de varias jornadas, las temperaturas de distintas estaciones o las posiciones de un tablero. La información no se consulta con un único índice, porque cada dato necesita dos referencias, una para la fila y otra para la columna.
+
+En esta guía se trabaja con una matriz estática de enteros de `4 × 4`.
+
+Antes de elegir los ciclos, responda estas tres preguntas:
+
+1. ¿Qué representa cada fila y qué representa cada columna?
+2. ¿Desde qué posición debe iniciar el recorrido y en qué posición debe terminar?
+3. ¿La condición para modificar un dato depende de su posición, de su valor o de ambos?
+
+### 1.1. Filas, columnas e índices
+
+Una matriz organiza datos con dos índices. En esta guía, `i` representa la fila y `j` representa la columna:
+
+```cpp
+matriz[i][j]
+```
+
+Los nombres `i` y `j` son una convención frecuente en recorridos de matrices. Para una matriz de `4 × 4`, ambos toman valores de `0` a `3`. Cada combinación válida de `i` y `j` identifica una única posición.
+
+| Posición | Representa |
+| --- | --- |
+| `matriz[0][0]` | esquina superior izquierda |
+| `matriz[0][3]` | esquina superior derecha |
+| `matriz[3][0]` | esquina inferior izquierda |
+| `matriz[3][3]` | esquina inferior derecha |
+
+Considere la siguiente matriz de puntajes registrados en cuatro jornadas:
+
+| Fila / columna | 0 | 1 | 2 | 3 |
+| --- | ---: | ---: | ---: | ---: |
+| 0 | 18 | 7 | 12 | 4 |
+| 1 | 9 | 21 | 6 | 14 |
+| 2 | 3 | 16 | 25 | 8 |
+| 3 | 19 | 5 | 11 | 22 |
+
+Antes de programar, anticipe lo que ocurrirá: si se inicia en `matriz[3][3]` y se retrocede primero por las columnas, ¿cuáles son los cuatro primeros valores que aparecen? Escriba los valores de `i` y `j` en cada una de esas cuatro visitas.
+
+> 💡 **Idea para recordar:** una matriz no se recorre memorizando posiciones aisladas. Se recorre al decidir qué representa cada índice, cómo avanza y cuándo debe detenerse.
+
+---
+
+## 2. 🔄 Recorrer una matriz de atrás hacia adelante
+
+En un recorrido habitual, `i` y `j` empiezan en `0` y aumentan. Para recorrer desde el final, cada ciclo empieza en el último índice y disminuye. No basta con cambiar `++` por `--`, también debe cambiar el valor inicial y la condición de permanencia.
+
+```cpp
+for (int i = filas - 1; i >= 0; i--) {
+    for (int j = 3; j >= 0; j--) {
+        // Procesar matriz[i][j]
+    }
+}
+```
+
+El ciclo externo usa `i` para seleccionar una fila. Para esa fila, el ciclo interno usa `j` para recorrer todas sus columnas, desde la última hasta la primera. Cuando termina una fila, `i` pasa a la fila anterior y `j` vuelve a empezar desde `3`.
+
+> Cuando `i` vale `3`, el ciclo interno recorre `j` con los valores `3`, `2`, `1` y `0`, porque debe completar todas las columnas de esa fila antes de pasar a la fila anterior.
+
+| Parte del ciclo | Recorrido habitual | Recorrido hacia atrás |
+| --- | --- | --- |
+| Inicio de `i` | `0` | `filas - 1` |
+| Condición de `i` | `i < filas` | `i >= 0` |
+| Cambio de `i` | `i++` | `i--` |
+| Inicio de `j` | `0` | `3` |
+| Condición de `j` | `j < 4` | `j >= 0` |
+| Cambio de `j` | `j++` | `j--` |
+
+Se utiliza `int` para `i` y `j`. Si un índice sin signo disminuye desde `0`, no representa `-1`, sino un valor grande, y el ciclo puede continuar de forma incorrecta.
+
+### 2.1. 👀 Ejemplo
+
+Primero observe el siguiente proyecto sin modificarlo. Identifique qué procedimiento muestra la matriz en su orden original y cuál recorre desde la esquina inferior derecha hasta la esquina superior izquierda.
+
+#### `operaciones.h`
+
+```cpp
+#ifndef OPERACIONES_H
+#define OPERACIONES_H
+
+void mostrarMatriz(int matriz[][4], int filas);
+void mostrarDesdeElFinal(int matriz[][4], int filas);
+void intercambiarExtremosDeFilasImpares(int matriz[][4], int filas);
+void mostrarDiagonalPrincipal(int matriz[][4], int filas);
+void mostrarDiagonalSecundaria(int matriz[][4], int filas);
+
+#endif
+```
+
+En `int matriz[][4]`, el `4` corresponde al número de columnas de la matriz. El compilador necesita conocer ese valor para ubicar cada posición en memoria. La cantidad de filas se recibe en el parámetro `filas`, por eso los ejemplos llaman los procedimientos con `4`.
+
+#### `operaciones.cpp`
+
+```cpp
+#include <iostream>
+#include "operaciones.h"
+
+using std::cout;
+using std::endl;
+
+void mostrarMatriz(int matriz[][4], int filas) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < 4; j++) {
+            cout << matriz[i][j] << "\t";
+        }
+        cout << endl;
+    }
+}
+
+void mostrarDesdeElFinal(int matriz[][4], int filas) {
+    for (int i = filas - 1; i >= 0; i--) {
+        for (int j = 3; j >= 0; j--) {
+            cout << matriz[i][j] << "\t";
+        }
+        cout << endl;
+    }
+}
+
+void intercambiarExtremosDeFilasImpares(int matriz[][4], int filas) {
+    for (int i = 0; i < filas; i++) {
+        if (i % 2 != 0) {
+            int temporal = matriz[i][0];
+            matriz[i][0] = matriz[i][3];
+            matriz[i][3] = temporal;
+        }
+    }
+}
+
+void mostrarDiagonalPrincipal(int matriz[][4], int filas) {
+    for (int i = 0; i < filas; i++) {
+        cout << matriz[i][i] << "\t";
+    }
+    cout << endl;
+}
+
+void mostrarDiagonalSecundaria(int matriz[][4], int filas) {
+    for (int i = 0; i < filas; i++) {
+        int j = 3 - i;
+        cout << matriz[i][j] << "\t";
+    }
+    cout << endl;
+}
+```
+
+#### `main.cpp`
+
+```cpp
+#include <iostream>
+#include "operaciones.h"
+
+using std::cout;
+using std::endl;
+
+int main() {
+    int puntajes[4][4] = {
+        {18, 7, 12, 4},
+        {9, 21, 6, 14},
+        {3, 16, 25, 8},
+        {19, 5, 11, 22}
+    };
+
+    cout << "Matriz original:" << endl;
+    mostrarMatriz(puntajes, 4);
+
+    cout << "\nRecorrido desde el final:" << endl;
+    mostrarDesdeElFinal(puntajes, 4);
+
+    return 0;
+}
+```
+
+Después de ejecutar el programa, la salida del recorrido desde el final debe comenzar así:
+
+```text
+22    11    5    19
+8     25    16   3
+```
+
+### 2.2. 🔎 Interpretar la evidencia con una tabla de seguimiento
+
+Complete la tabla para las dos primeras filas que imprime `mostrarDesdeElFinal`. Observe que `j` cambia en cada vuelta interna, mientras `i` solo cambia cuando termina una fila completa.
+
+| Vuelta | `i` | `j` | `matriz[i][j]` | Valor mostrado |
+| ---: | ---: | ---: | ---: | ---: |
+| 1 |  |  |  |  |
+| 2 |  |  |  |  |
+| 3 |  |  |  |  |
+| 4 |  |  |  |  |
+| 5 |  |  |  |  |
+| 6 |  |  |  |  |
+| 7 |  |  |  |  |
+| 8 |  |  |  |  |
+
+### 2.3. ✍️ Práctica, cambiar el recorrido
+
+En cada ejercicio, conserve la matriz y cree un procedimiento con la responsabilidad indicada. Antes de codificar, anote el valor inicial, la condición y el cambio de los índices que utilizará.
+
+#### Para empezar, reconocer y modificar un patrón
+
+1. Cree `mostrarUltimaFilaAlReves`, que muestre únicamente la fila de índice `3`, desde la columna `3` hasta la columna `0`.
+2. Cree `mostrarFilasDesdeElFinal`, que recorra las filas desde la última hasta la primera, pero muestre las columnas de izquierda a derecha. ¿Cuál ciclo cambia y cuál se conserva?
+
+#### Para avanzar, combinar recorrido y condición
+
+3. Cree `mostrarFilasImparesAlReves`, que recorra la matriz desde el final y muestre solo las filas de índice impar, `3` y `1`.
+4. Modifique `mostrarDesdeElFinal` para mostrar únicamente los valores mayores que `10`. Antes de ejecutar, escriba los primeros tres valores que espera observar.
+
+---
+
+## 3. 🔁 Intercambiar posiciones cuando se cumple una condición
+
+Intercambiar dos posiciones no significa reemplazar un dato por otro arbitrario. Significa mover ambos valores sin perder ninguno. Para lograrlo, uno de ellos debe guardarse de forma temporal mientras se realiza el cambio.
+
+```cpp
+int temporal = matriz[i][jA];
+matriz[i][jA] = matriz[i][jB];
+matriz[i][jB] = temporal;
+```
+
+Sin `temporal`, el primer valor se pierde en la primera asignación. Esta misma idea aparece cuando se intercambian dos cartas, una de ellas debe sostenerse antes de ocupar su lugar con la otra.
+
+### 3.1. 📍 Condición sobre la posición
+
+`intercambiarExtremosDeFilasImpares` intercambia la primera y la última posición de cada fila impar. Antes de leer el código, identifique las filas que se modificarían en una matriz de cuatro filas.
+
+```cpp
+if (i % 2 != 0) {
+    int temporal = matriz[i][0];
+    matriz[i][0] = matriz[i][3];
+    matriz[i][3] = temporal;
+}
+```
+
+La condición se decide con el índice `i`, no con los valores almacenados. En una matriz de cuatro filas, se modifican las filas `1` y `3`.
+
+Agregue estas líneas al final de `main.cpp` y anticipe qué filas cambian antes de ejecutar:
+
+```cpp
+cout << "\nIntercambio en filas impares:" << endl;
+intercambiarExtremosDeFilasImpares(puntajes, 4);
+mostrarMatriz(puntajes, 4);
+```
+
+### 3.2. 🔢 Condición sobre los valores
+
+Este procedimiento revisa parejas contiguas de cada fila. Cuando el valor de la izquierda es mayor que el de la derecha, intercambia la pareja. Aquí la decisión depende de los valores encontrados durante el recorrido.
+
+```cpp
+void intercambiarParejasInvertidas(int matriz[][4], int filas) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (matriz[i][j] > matriz[i][j + 1]) {
+                int temporal = matriz[i][j];
+                matriz[i][j] = matriz[i][j + 1];
+                matriz[i][j + 1] = temporal;
+            }
+        }
+    }
+}
+```
+
+El ciclo de `j` llega hasta `2`, porque compara `j` con `j + 1`. Si llegara hasta `3`, intentaría acceder a `matriz[i][4]`, una posición que no existe.
+
+Una ejecución de este procedimiento no ordena necesariamente cada fila. Solo realiza una pasada de comparaciones e intercambios contiguos. Anticipe la fila resultante antes de ejecutar el código con un ejemplo pequeño.
+
+### 3.3. ✍️ Práctica, decidir qué posiciones intercambiar
+
+#### Para empezar, intercambiar posiciones conocidas
+
+5. Cree `intercambiarExtremosDeFilasPares`, que intercambie las columnas `0` y `3` únicamente en las filas pares.
+
+#### Para avanzar, recorrer y comparar valores
+
+6. Cree `intercambiarVerticalesSiAumentan`, que compare cada dato con el que está inmediatamente debajo. Si el valor superior es menor que el inferior, debe intercambiarlos. Determine hasta qué fila puede llegar el ciclo externo antes de escribirlo.
+7. Para la fila `{8, 3, 6, 2}`, realice a mano una pasada de `intercambiarParejasInvertidas`. Escriba la fila resultante y señale cuál comparación se hizo en cada vuelta.
+
+#### Para integrar, relacionar dos patrones
+
+8. Cree `intercambiarExtremosSiDiagonalSupera`, que intercambie los extremos de una fila solo cuando el valor de la diagonal principal de esa fila sea mayor que `15`.
+
+---
+
+## 4. ↘️ Mostrar las diagonales de una matriz cuadrada
+
+Las diagonales seleccionan posiciones que siguen una relación entre `i` y `j`. En una matriz `4 × 4`, la diagonal principal avanza desde la esquina superior izquierda hasta la esquina inferior derecha.
+
+```text
+(0, 0) → (1, 1) → (2, 2) → (3, 3)
+```
+
+En cada posición de la diagonal principal, `i` y `j` tienen el mismo valor. Por eso se accede con:
+
+```cpp
+matriz[i][i]
+```
+
+La diagonal secundaria avanza desde la esquina superior derecha hasta la esquina inferior izquierda. Mientras `i` aumenta, `j` disminuye.
+
+```text
+(0, 3) → (1, 2) → (2, 1) → (3, 0)
+```
+
+Para una matriz de cuatro columnas, `j` se calcula con:
+
+```cpp
+int j = 3 - i;
+```
+
+| `i` | `j` de la diagonal principal | `j` de la diagonal secundaria |
+| ---: | ---: | ---: |
+| 0 | 0 | 3 |
+| 1 | 1 | 2 |
+| 2 | 2 | 1 |
+| 3 | 3 | 0 |
+
+Las funciones incluidas al inicio de la guía ya muestran ambas diagonales. Antes de agregarlas a `main.cpp`, escriba las cuatro posiciones que recorrerá cada una. Luego agregue:
+
+```cpp
+cout << "\nDiagonal principal:" << endl;
+mostrarDiagonalPrincipal(puntajes, 4);
+
+cout << "Diagonal secundaria:" << endl;
+mostrarDiagonalSecundaria(puntajes, 4);
+```
+
+Para la matriz original, la diagonal principal está formada por `18`, `21`, `25` y `22`. La diagonal secundaria está formada por `4`, `6`, `16` y `19`.
+
+### 4.1. ✍️ Práctica con diagonales
+
+#### Para empezar, reconocer la relación entre índices
+
+9. Cree `sumarDiagonalPrincipal`, que retorne la suma de los valores de la diagonal principal.
+
+#### Para avanzar, usar una condición durante el recorrido
+
+10. Cree `mostrarDiagonalSecundariaPares`, que muestre únicamente los valores pares de la diagonal secundaria.
+11. Cree `contarDiagonalPrincipalMayoresQue`, que reciba además un límite y retorne cuántos valores de la diagonal principal lo superan.
+
+#### Para integrar, adaptar una regla a otro caso
+
+12. Explique por qué `matriz[i][3 - i]` funciona para la diagonal secundaria en una matriz de `4 × 4`, pero no se puede copiar sin cambios a una matriz con cinco columnas.
+
+---
+
+## 5. 🧪 Práctica progresiva e integración
+
+Los ejercicios de transferencia conservan la lógica ya trabajada, pero cambian el contexto y la forma de plantear el problema. La intención es reconocer el patrón de matrices sin depender del ejemplo de puntajes o de temperaturas.
+
+### 5.1. 🔀 Ejercicios de transferencia
+
+#### Transferencia 1, panel de luces, aplicar un recorrido inverso
+
+Un panel tiene `4 × 4` luces y cada posición almacena su intensidad, de `0` a `100`. Cree `mostrarLucesDesdeLaUltima`, que recorra la matriz desde la posición inferior derecha hasta la superior izquierda y muestre solamente las intensidades inferiores a `30`.
+
+Antes de programar, responda: ¿qué valores iniciales usan `i` y `j`?, ¿qué condición controla cada ciclo?, ¿en qué lugar se ubica la condición sobre la intensidad?
+
+#### Transferencia 2, lecturas de sensores, decidir un intercambio
+
+Una matriz de `4 × 4` almacena lecturas de sensores. Cada fila corresponde a un instante de medición y cada columna a un sensor. Cree `intercambiarExtremosSiHayAlerta`, que intercambie la primera y la última lectura de una fila cuando la lectura de la diagonal principal de esa fila sea mayor que `80`.
+
+Identifique antes de escribir el código qué posiciones forman la diagonal principal y cuáles posiciones se intercambian cuando se cumple la condición.
+
+#### Transferencia 3, bloque de píxeles, integrar los tres patrones
+
+Un bloque de una imagen en escala de grises se representa con una matriz de `4 × 4`, cuyos valores están entre `0` y `255`. Implemente procedimientos para:
+
+1. Mostrar los píxeles desde el final de la matriz.
+2. Intercambiar los extremos de cada fila si el píxel de la diagonal secundaria en esa fila es menor que `50`.
+3. Retornar la suma de la diagonal principal.
+4. Mostrar los valores de ambas diagonales después de realizar los intercambios.
+
+Antes de ejecutar, dibuje la matriz, marque las dos diagonales y señale las filas que espera modificar. Compare ese dibujo con la salida del programa.
+
+### 5.2. 🏁 Reto integrador, temperaturas por estación
+
+El siguiente reto integra los tres patrones trabajados. La matriz representa temperaturas medidas en cuatro estaciones durante cuatro momentos del día:
+
+```cpp
+int temperaturas[4][4] = {
+    {17, 23, 19, 14},
+    {12, 25, 20, 18},
+    {16, 15, 27, 21},
+    {11, 22, 13, 24}
+};
+```
+
+Implemente y pruebe estos procedimientos. Cada uno debe tener una sola responsabilidad. Antes de escribir cada procedimiento, indique qué información recibe, qué acción realiza y si modifica o no la matriz.
+
+1. `mostrarTemperaturasDesdeElFinal`, que recorra todos los datos desde `temperaturas[3][3]` hasta `temperaturas[0][0]`.
+2. `intercambiarExtremosCuandoPrimeroSupereUltimo`, que intercambie el primer y el último valor de una fila si el primero es mayor que el último.
+3. `mostrarDiagonalPrincipal` y `mostrarDiagonalSecundaria` para esta matriz.
+4. `sumarDiagonalSecundaria`, que retorne la suma de la diagonal secundaria.
+
+Antes de ejecutar cada procedimiento, anote una predicción: qué posiciones se visitan, qué filas cambian y cuál resultado espera. Si la predicción y la ejecución no coinciden, complete una tabla de seguimiento de las primeras vueltas donde aparezca la diferencia. Esa comparación permite ubicar el índice, la condición o la asignación que necesita revisarse.
+
+### 5.3. ✅ Revisión de la solución
+
+Revise cada procedimiento antes de darlo por terminado. La intención no es solo que el programa produzca una salida, sino que pueda explicarse por qué visita unas posiciones y no otras.
+
+- ¿`i` y `j` comienzan y terminan en posiciones válidas?
+- ¿El ciclo que recorre hacia atrás usa `>= 0` y disminuye con `--`?
+- ¿El recorrido interno se completa antes de cambiar la fila?
+- ¿El intercambio usa una variable temporal?
+- ¿La condición se aplica antes de modificar la matriz?
+- ¿La diagonal principal usa el mismo índice en fila y columna?
+- ¿La columna de la diagonal secundaria disminuye mientras la fila aumenta?
+
+### 5.4. 💬 Prompt para revisar el código
+
+```text
+Estoy aprendiendo a recorrer matrices en C++. Analiza mi código sin reescribirlo
+ni darme la solución completa. Hazme una pregunta a la vez para que yo revise:
+
+1. Los límites de `i` y `j`.
+2. El sentido de cada ciclo, hacia adelante o hacia atrás.
+3. Si el intercambio conserva ambos valores.
+4. Si las posiciones usadas pertenecen a la diagonal solicitada.
+
+Cuando detectes un posible error, indícame la línea o la expresión que debo
+revisar y pide que yo explique qué valor toman `i` y `j` en esa vuelta.
+Solo después de que responda, continúa con la siguiente pregunta.
+```
+
+### 5.5. 🌱 Para cerrar
+
+Un recorrido de matriz no cambia por completo cuando se invierte. Cambian el inicio, la condición y el avance de los índices que deben retroceder. Un intercambio exige proteger temporalmente un valor, y una diagonal se reconoce por una relación estable entre fila y columna.
+
+Si una solución no funciona en el primer intento, no cambie varios elementos a la vez. Elija una vuelta del ciclo, escriba los valores de `i` y `j`, y compruebe si la posición obtenida pertenece a la matriz y al recorrido esperado. Ese proceso permite aprender a justificar el código, no solo a corregirlo hasta que funcione.
